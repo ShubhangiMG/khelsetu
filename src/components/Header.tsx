@@ -7,8 +7,11 @@ import { useState } from "react";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
-  { href: "/our-work", label: "Our Work" },
-  { href: "/stories", label: "Stories" },
+  { href: "/projects", label: "Our Projects" },
+  { href: "/impact", label: "Our Impact" },
+  { href: "/coaches", label: "Coaches" },
+  { href: "/advisors", label: "Advisors" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -22,7 +25,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/images/logo.jpg"
+              src="/images/logo.png"
               alt="Khel Setu Foundation"
               width={50}
               height={50}

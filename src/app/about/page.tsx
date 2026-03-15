@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -56,11 +57,14 @@ export default function AboutPage() {
       <section className="py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="bg-gray-200 rounded-2xl h-96 flex items-center justify-center">
-              {/* PLACEHOLDER: Replace with actual image */}
-              <span className="text-gray-400">
-                [Founder / Team photo placeholder]
-              </span>
+            <div className="rounded-2xl overflow-hidden">
+              <Image
+                src="/images/founder.jpg"
+                alt="Founder — Khel Setu Foundation"
+                width={800}
+                height={600}
+                className="w-full h-auto"
+              />
             </div>
             <div>
               <h2 className="text-3xl font-bold text-navy mb-4">Our Story</h2>

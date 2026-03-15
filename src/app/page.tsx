@@ -8,7 +8,7 @@ function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-light to-navy opacity-90" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
         <Image
-          src="/images/logo.jpg"
+          src="/images/logo.png"
           alt="Khel Setu Foundation"
           width={120}
           height={120}
@@ -72,38 +72,22 @@ function ImpactNumbers() {
   );
 }
 
-/* ───────── AREAS OF WORK ───────── */
-function AreasOfWork() {
-  const areas = [
+/* ───────── OUR PROJECTS ───────── */
+function ProjectsPreview() {
+  const projects = [
+    {
+      icon: "💪",
+      title: "Project Mukti",
+      subtitle: "Women Empowerment",
+      desc: "Empowering women through sports — breaking barriers, building confidence, and creating pathways to independence and self-reliance.",
+      href: "/projects#mukti",
+    },
     {
       icon: "⚽",
-      title: "Grassroots Football",
-      desc: "Building football programs from the ground up in underserved communities.",
-    },
-    {
-      icon: "🏆",
-      title: "Athlete Development",
-      desc: "Identifying and nurturing sporting talent to reach their full potential.",
-    },
-    {
-      icon: "🎓",
-      title: "Sports & Education",
-      desc: "Combining academics with athletics for holistic youth development.",
-    },
-    {
-      icon: "🤝",
-      title: "Community Sports",
-      desc: "Organizing sports events that unite and uplift local communities.",
-    },
-    {
-      icon: "👟",
-      title: "Training & Coaching",
-      desc: "Providing professional coaching and training infrastructure.",
-    },
-    {
-      icon: "🌟",
-      title: "Scholarships",
-      desc: "Financial support for talented athletes from underprivileged backgrounds.",
+      title: "Project PlayFree",
+      subtitle: "Sports Recognition",
+      desc: "Giving recognition and platforms to grassroots athletes who deserve to be seen, celebrated, and supported in their sporting journey.",
+      href: "/projects#playfree",
     },
   ];
 
@@ -112,33 +96,42 @@ function AreasOfWork() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-            Areas of Work
+            Our Projects
           </h2>
           <div className="w-20 h-1 bg-gold mx-auto mb-6" />
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             {/* PLACEHOLDER: Replace with actual description */}
-            We work across multiple domains to create a comprehensive sports
-            ecosystem that empowers every athlete.
+            Focused initiatives driving real change through sports and community
+            empowerment.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {areas.map((area) => (
-            <div
-              key={area.title}
-              className="bg-cream rounded-xl p-8 hover:shadow-lg transition-shadow duration-300 border border-gray-100"
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {projects.map((project) => (
+            <Link
+              key={project.title}
+              href={project.href}
+              className="bg-cream rounded-xl p-10 hover:shadow-lg transition-shadow duration-300 border border-gray-100 block"
             >
-              <div className="text-4xl mb-4">{area.icon}</div>
-              <h3 className="text-xl font-bold text-navy mb-3">{area.title}</h3>
-              <p className="text-gray-600">{area.desc}</p>
-            </div>
+              <div className="text-5xl mb-4">{project.icon}</div>
+              <h3 className="text-2xl font-bold text-navy mb-1">
+                {project.title}
+              </h3>
+              <p className="text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+                {project.subtitle}
+              </p>
+              <p className="text-gray-600">{project.desc}</p>
+              <span className="text-navy font-semibold text-sm mt-4 inline-block">
+                Learn More →
+              </span>
+            </Link>
           ))}
         </div>
         <div className="text-center mt-12">
           <Link
-            href="/our-work"
+            href="/projects"
             className="bg-navy text-white px-8 py-3 rounded-md font-semibold hover:bg-navy-light transition-colors duration-200"
           >
-            Explore Our Work
+            Explore All Projects
           </Link>
         </div>
       </div>
@@ -190,78 +183,62 @@ function AboutSnippet() {
   );
 }
 
-/* ───────── STORIES / TESTIMONIALS ───────── */
-function StoriesSection() {
-  const stories = [
-    {
-      title: "From Village Ground to State Team",
-      category: "Athlete Story",
-      excerpt:
-        "A young footballer from rural India gets the training and support to represent their state.",
-    },
-    {
-      title: "Community Cup Brings a Town Together",
-      category: "Community",
-      excerpt:
-        "An annual sports tournament becomes the highlight of a small town, uniting people across all ages.",
-    },
-    {
-      title: "Scholarship Changes Everything",
-      category: "Education",
-      excerpt:
-        "With financial backing, a talented athlete balances studies and sport to build a complete future.",
-    },
-  ];
-
+/* ───────── OUR IMPACT PREVIEW ───────── */
+function ImpactPreview() {
   return (
     <section className="py-20 bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-            Impact Stories
+            Our Impact
           </h2>
           <div className="w-20 h-1 bg-gold mx-auto mb-6" />
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Real stories of real impact — lives changed through the power of
-            sports.
+            {/* PLACEHOLDER: Replace with actual description */}
+            From grassroots fields to national stages — see how we are making a
+            difference across communities.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {stories.map((story) => (
+          {[
+            {
+              title: "Lives Transformed Through Sport",
+              desc: "Athletes from underprivileged backgrounds gaining access to professional training and competitive platforms.",
+            },
+            {
+              title: "Communities United",
+              desc: "Sports events bringing together people across ages, genders, and backgrounds to build stronger communities.",
+            },
+            {
+              title: "Women Breaking Barriers",
+              desc: "Through Project Mukti, women are discovering confidence, leadership, and independence through sports.",
+            },
+          ].map((item) => (
             <div
-              key={story.title}
+              key={item.title}
               className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
             >
-              {/* PLACEHOLDER: Replace with actual story image */}
+              {/* PLACEHOLDER: Replace with actual impact image */}
               <div className="h-48 bg-gray-200 flex items-center justify-center">
                 <span className="text-gray-400 text-sm">
-                  [Story image placeholder]
+                  [Impact image placeholder]
                 </span>
               </div>
               <div className="p-6">
-                <span className="text-crimson text-xs font-bold uppercase tracking-wider">
-                  {story.category}
-                </span>
-                <h3 className="text-lg font-bold text-navy mt-2 mb-3">
-                  {story.title}
+                <h3 className="text-lg font-bold text-navy mb-3">
+                  {item.title}
                 </h3>
-                <p className="text-gray-600 text-sm">{story.excerpt}</p>
-                <Link
-                  href="/stories"
-                  className="text-gold font-semibold text-sm mt-4 inline-block hover:text-gold-dark transition-colors"
-                >
-                  Read More →
-                </Link>
+                <p className="text-gray-600 text-sm">{item.desc}</p>
               </div>
             </div>
           ))}
         </div>
         <div className="text-center mt-12">
           <Link
-            href="/stories"
+            href="/impact"
             className="bg-navy text-white px-8 py-3 rounded-md font-semibold hover:bg-navy-light transition-colors duration-200"
           >
-            All Stories
+            See Our Full Impact
           </Link>
         </div>
       </div>
@@ -299,9 +276,9 @@ export default function HomePage() {
     <>
       <HeroSection />
       <ImpactNumbers />
-      <AreasOfWork />
+      <ProjectsPreview />
       <AboutSnippet />
-      <StoriesSection />
+      <ImpactPreview />
       <CTASection />
     </>
   );

@@ -22,8 +22,11 @@ export default function Footer() {
             <ul className="space-y-2">
               {[
                 { href: "/about", label: "About Us" },
-                { href: "/our-work", label: "Our Work" },
-                { href: "/stories", label: "Impact Stories" },
+                { href: "/projects", label: "Our Projects" },
+                { href: "/impact", label: "Our Impact" },
+                { href: "/coaches", label: "Coaches" },
+                { href: "/advisors", label: "Advisors" },
+                { href: "/gallery", label: "Gallery" },
                 { href: "/contact", label: "Contact Us" },
                 { href: "/privacy", label: "Privacy Policy" },
               ].map((link) => (

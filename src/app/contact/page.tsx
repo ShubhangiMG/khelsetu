@@ -149,7 +149,7 @@ export default function ContactPage() {
                     <h3 className="font-bold text-navy">Phone</h3>
                     <p className="text-gray-600 mt-1">
                       {/* PLACEHOLDER: Replace with actual phone */}
-                      [Phone number placeholder]
+                      8094939595
                     </p>
                   </div>
                 </div>
@@ -161,7 +161,7 @@ export default function ContactPage() {
                     <h3 className="font-bold text-navy">Email</h3>
                     <p className="text-gray-600 mt-1">
                       {/* PLACEHOLDER: Replace with actual email */}
-                      [email@khelsetu.org]
+                      khelsetu.org@gmail.com
                     </p>
                   </div>
                 </div>
