@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Our Projects — Khel Setu Foundation",
   description:
-    "Explore Khel Setu Foundation's projects: Project Mukti for women empowerment and Project PlayFree for sports recognition.",
+    "Explore Khel Setu Foundation's projects: PlayFree, Endorphin, Mukti, Second Innings, and BookRise.",
 };
 
 export default function ProjectsPage() {
@@ -23,6 +23,113 @@ export default function ProjectsPage() {
           </p>
         </div>
       </section>
+
+      {/* Project PlayFree */}
+      <section id="playfree" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="text-crimson font-bold text-sm uppercase tracking-wider">
+                Project
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">
+                PlayFree
+              </h2>
+              <p className="text-gold font-semibold text-lg mb-6">
+                Sports Recognition & Grassroots Platforms
+              </p>
+              <div className="w-16 h-1 bg-gold mb-6" />
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                {/* PLACEHOLDER: Replace with actual description */}
+                Project PlayFree is about giving every athlete — no matter how
+                remote their village or modest their means — the recognition they
+                deserve. We create platforms where grassroots talent can be
+                discovered, celebrated, and supported.
+              </p>
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                {/* PLACEHOLDER: Replace with more details */}
+                Through tournaments, scouting camps, and athlete spotlights, we
+                connect emerging athletes with coaches, organizations, and
+                opportunities that can change the trajectory of their careers.
+              </p>
+              <div className="grid grid-cols-2 gap-4 mt-8">
+                {[
+                  "Grassroots tournaments",
+                  "Talent scouting camps",
+                  "Athlete spotlights",
+                  "Coaching connections",
+                  "Equipment support",
+                  "Competition exposure",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <span className="text-gold">✓</span>
+                    <span className="text-gray-700 text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-cream rounded-2xl h-96 flex items-center justify-center">
+              <span className="text-gray-400">[Project PlayFree image placeholder]</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="bg-gray-100 h-px" />
+
+      {/* Project Endorphin */}
+      <section id="endorphin" className="py-20 bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="bg-white rounded-2xl h-96 flex items-center justify-center lg:order-1">
+              <span className="text-gray-400">[Project Endorphin image placeholder]</span>
+            </div>
+            <div className="lg:order-2">
+              <span className="text-crimson font-bold text-sm uppercase tracking-wider">
+                Project
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">
+                Endorphin
+              </h2>
+              <p className="text-gold font-semibold text-lg mb-6">
+                Fitness & Wellbeing
+              </p>
+              <div className="w-16 h-1 bg-gold mb-6" />
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                {/* PLACEHOLDER: Replace with actual description */}
+                Project Endorphin harnesses the natural power of sports to
+                boost mental health, physical fitness, and overall wellbeing.
+                Named after the &ldquo;feel-good&rdquo; chemicals released
+                during exercise, this initiative brings structured fitness and
+                wellness programs to communities.
+              </p>
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                {/* PLACEHOLDER: Replace with more details */}
+                From community fitness drives to mental health awareness through
+                sport, Endorphin is about making wellness accessible and
+                enjoyable for everyone.
+              </p>
+              <div className="grid grid-cols-2 gap-4 mt-8">
+                {[
+                  "Community fitness programs",
+                  "Mental health awareness",
+                  "Wellness workshops",
+                  "Youth fitness camps",
+                  "Stress relief through sport",
+                  "Healthy lifestyle promotion",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <span className="text-gold">✓</span>
+                    <span className="text-gray-700 text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="bg-gray-100 h-px" />
 
       {/* Project Mukti */}
       <section id="mukti" className="py-20 bg-white">
@@ -86,52 +193,98 @@ export default function ProjectsPage() {
       {/* Divider */}
       <div className="bg-gray-100 h-px" />
 
-      {/* Project PlayFree */}
-      <section id="playfree" className="py-20 bg-cream">
+      {/* Project Second Innings */}
+      <section id="second-innings" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="text-crimson font-bold text-sm uppercase tracking-wider">
+                Project
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">
+                Second Innings
+              </h2>
+              <p className="text-gold font-semibold text-lg mb-6">
+                Sports Beyond Retirement
+              </p>
+              <div className="w-16 h-1 bg-gold mb-6" />
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                {/* PLACEHOLDER: Replace with actual description */}
+                Project Second Innings is dedicated to athletes and sports
+                enthusiasts who still have so much to give. Whether it&apos;s
+                retired players, senior sportspersons, or those looking for a
+                fresh start, this project creates opportunities to stay
+                connected to sports.
+              </p>
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                {/* PLACEHOLDER: Replace with more details */}
+                Through coaching roles, mentorship programs, and masters-level
+                competitions, Second Innings ensures that passion for sports
+                never has to end.
+              </p>
+              <div className="grid grid-cols-2 gap-4 mt-8">
+                {[
+                  "Coaching opportunities",
+                  "Mentorship programs",
+                  "Masters competitions",
+                  "Knowledge transfer",
+                  "Senior fitness programs",
+                  "Community leadership",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <span className="text-gold">✓</span>
+                    <span className="text-gray-700 text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-cream rounded-2xl h-96 flex items-center justify-center">
+              <span className="text-gray-400">[Project Second Innings image placeholder]</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="bg-gray-100 h-px" />
+
+      {/* Project BookRise */}
+      <section id="bookrise" className="py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="bg-white rounded-2xl h-96 flex items-center justify-center lg:order-1">
-              {/* PLACEHOLDER: Replace with actual Project PlayFree image */}
-              <span className="text-gray-400">
-                [Project PlayFree image placeholder]
-              </span>
+              <span className="text-gray-400">[Project BookRise image placeholder]</span>
             </div>
             <div className="lg:order-2">
               <span className="text-crimson font-bold text-sm uppercase tracking-wider">
                 Project
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">
-                PlayFree
+                BookRise
               </h2>
               <p className="text-gold font-semibold text-lg mb-6">
-                Sports Recognition & Grassroots Platforms
+                Education Through Sports
               </p>
               <div className="w-16 h-1 bg-gold mb-6" />
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                {/* PLACEHOLDER: Replace with actual Project PlayFree description */}
-                Project PlayFree is about giving every athlete — no matter how
-                remote their village or modest their means — the recognition they
-                deserve. We create platforms where grassroots talent can be
-                discovered, celebrated, and supported.
+                {/* PLACEHOLDER: Replace with actual description */}
+                Project BookRise bridges the gap between education and athletics.
+                We ensure that young athletes don&apos;t have to choose between
+                their studies and their sport — they can excel at both.
               </p>
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
                 {/* PLACEHOLDER: Replace with more details */}
-                Through tournaments, scouting camps, and athlete spotlights then
-                we connect emerging athletes with coaches, organizations, and
-                opportunities that can change the trajectory of their careers and
-                lives.
+                From academic tutoring and library access to study materials and
+                educational workshops, BookRise provides the support athletes need
+                to build complete, well-rounded futures.
               </p>
-
-              {/* Key Highlights */}
               <div className="grid grid-cols-2 gap-4 mt-8">
-                {/* PLACEHOLDER: Replace with actual highlights */}
                 {[
-                  "Grassroots tournaments",
-                  "Talent scouting camps",
-                  "Athlete spotlights",
-                  "Coaching connections",
-                  "Equipment support",
-                  "Competition exposure",
+                  "Academic tutoring",
+                  "Library & study resources",
+                  "Educational workshops",
+                  "School partnerships",
+                  "Scholarship guidance",
+                  "Career counseling",
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <span className="text-gold">✓</span>

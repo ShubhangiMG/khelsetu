@@ -3,25 +3,54 @@ import Link from "next/link";
 
 /* ───────── HERO SECTION ───────── */
 function HeroSection() {
+  const heroImages = ["/images/founder.jpg", "/images/founder2.jpg", "/images/launch.jpg"];
+
   return (
-    <section className="relative bg-navy min-h-[80vh] flex items-center">
-      <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-light to-navy opacity-90" />
+    <section className="relative bg-navy min-h-[100vh] flex items-center overflow-hidden">
+      {/* Sliding background images */}
+      <div
+        className="absolute inset-0 flex animate-slide"
+        style={{ width: `${heroImages.length * 50}%` }}
+      >
+        {/* Double the images for seamless loop */}
+        {[...heroImages, ...heroImages].map((src, i) => (
+          <div
+            key={i}
+            className="relative shrink-0"
+            style={{ width: `${100 / heroImages.length}%` }}
+          >
+            <Image
+              src={src}
+              alt=""
+              fill
+              className="object-cover"
+              priority={i < heroImages.length}
+            />
+          </div>
+        ))}
+      </div>
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-navy/75" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-        <Image
-          src="/images/logo.png"
-          alt="Khel Setu Foundation"
-          width={120}
-          height={120}
-          className="mx-auto mb-8"
-        />
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-          Bridging Sports &<br />
-          <span className="text-gold">Opportunity</span>
+        <p
+          className="font-[var(--font-playfair)] font-black text-5xl md:text-2xl tracking-wider mb-8 text-transparent bg-clip-text leading-tight"
+          style={{
+            // backgroundImage: "url('/images/tricolor.png')",
+            backgroundColor: "#FFFFFF",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            WebkitTextStroke: "1px rgba(197, 165, 90, 0.3)",
+          }}
+        >
+          #ChooseSportsNotDrugs
+        </p>
+        <h1 className="text-4xl md:text-6xl font-bold text-gold mb-6 leading-tight">
+          Bridging Sports & Opportunity
         </h1>
         <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10">
-          {/* PLACEHOLDER: Replace with actual tagline */}
-          Empowering communities through sports. Nurturing talent. Building
-          futures across India.
+          Empowering communities through sports, knowledge and awareness.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
@@ -76,6 +105,20 @@ function ImpactNumbers() {
 function ProjectsPreview() {
   const projects = [
     {
+      icon: "⚽",
+      title: "Project PlayFree",
+      subtitle: "Sports Recognition",
+      desc: "Giving recognition and platforms to grassroots athletes who deserve to be seen, celebrated, and supported in their sporting journey.",
+      href: "/projects#playfree",
+    },
+    {
+      icon: "🏃",
+      title: "Project Endorphin",
+      subtitle: "Fitness & Wellbeing",
+      desc: "Promoting fitness, mental health, and overall wellbeing through structured sports activities and community wellness programs.",
+      href: "/projects#endorphin",
+    },
+    {
       icon: "💪",
       title: "Project Mukti",
       subtitle: "Women Empowerment",
@@ -83,11 +126,18 @@ function ProjectsPreview() {
       href: "/projects#mukti",
     },
     {
-      icon: "⚽",
-      title: "Project PlayFree",
-      subtitle: "Sports Recognition",
-      desc: "Giving recognition and platforms to grassroots athletes who deserve to be seen, celebrated, and supported in their sporting journey.",
-      href: "/projects#playfree",
+      icon: "🔄",
+      title: "Project Second Innings",
+      subtitle: "Sports Beyond Retirement",
+      desc: "Helping retired and senior athletes find purpose, stay active, and contribute to sports development through coaching and mentorship.",
+      href: "/projects#second-innings",
+    },
+    {
+      icon: "📚",
+      title: "Project BookRise",
+      subtitle: "Education Through Sports",
+      desc: "Bridging education and athletics — ensuring young athletes have access to learning resources and academic support alongside their training.",
+      href: "/projects#bookrise",
     },
   ];
 
@@ -105,7 +155,7 @@ function ProjectsPreview() {
             empowerment.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {projects.map((project) => (
             <Link
               key={project.title}
