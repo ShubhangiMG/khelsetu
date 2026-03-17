@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Our Coaches — Khel Setu Foundation",
@@ -39,7 +40,7 @@ export default function CoachesPage() {
   return (
     <>
       {/* Page Hero */}
-      <section className="bg-navy py-20">
+      <section className="bg-navy pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Our <span className="text-gold">Coaches</span>
@@ -52,45 +53,44 @@ export default function CoachesPage() {
       </section>
 
       {/* Coaches Grid */}
-      <section className="py-20 bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-cream relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gradient-to-bl from-gold/5 to-transparent blur-3xl" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {coaches.map((coach) => (
-              <div
-                key={coach.name}
-                className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
-              >
-                <div className="flex flex-col sm:flex-row">
-                  {/* PLACEHOLDER: Replace with actual coach photo */}
-                  <div className="sm:w-48 h-48 sm:h-auto bg-gray-200 flex items-center justify-center shrink-0">
-                    <span className="text-gray-400 text-sm">[Photo]</span>
-                  </div>
-                  <div className="p-6 flex-1">
-                    <h3 className="text-xl font-bold text-navy">
-                      {coach.name}
-                    </h3>
-                    <p className="text-gold font-semibold text-sm mb-3">
-                      {coach.sport}
-                    </p>
-                    <p className="text-gray-600 text-sm mb-4">{coach.bio}</p>
-                    <div>
-                      <p className="text-navy font-semibold text-xs uppercase tracking-wider mb-2">
-                        Key Achievements
+            {coaches.map((coach, i) => (
+              <ScrollReveal key={coach.name} direction="up" delay={i * 100}>
+                <div className="card-hover bg-white rounded-2xl overflow-hidden">
+                  <div className="flex flex-col sm:flex-row">
+                    <div className="sm:w-48 h-48 sm:h-auto placeholder-gradient flex items-center justify-center shrink-0">
+                      <span className="text-gray-400 text-sm">[Photo]</span>
+                    </div>
+                    <div className="p-8 flex-1">
+                      <h3 className="text-xl font-bold text-navy">
+                        {coach.name}
+                      </h3>
+                      <p className="text-gold font-semibold text-sm mb-3">
+                        {coach.sport}
                       </p>
-                      <ul className="space-y-1">
-                        {coach.achievements.map((a) => (
-                          <li
-                            key={a}
-                            className="text-gray-600 text-xs flex items-center gap-2"
-                          >
-                            <span className="text-gold">•</span> {a}
-                          </li>
-                        ))}
-                      </ul>
+                      <p className="text-gray-600 text-sm mb-4 leading-relaxed">{coach.bio}</p>
+                      <div>
+                        <p className="text-navy font-semibold text-xs uppercase tracking-wider mb-2">
+                          Key Achievements
+                        </p>
+                        <ul className="space-y-1">
+                          {coach.achievements.map((a) => (
+                            <li
+                              key={a}
+                              className="text-gray-600 text-xs flex items-center gap-2"
+                            >
+                              <span className="text-gold">✓</span> {a}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

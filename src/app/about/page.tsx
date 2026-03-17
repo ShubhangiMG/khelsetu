@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "About Us — Khel Setu Foundation",
@@ -12,7 +13,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Page Hero */}
-      <section className="bg-navy py-20">
+      <section className="bg-navy pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             About <span className="text-gold">Us</span>
@@ -25,50 +26,61 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gradient-to-bl from-gold/5 to-transparent blur-3xl" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div>
-              <h2 className="text-3xl font-bold text-navy mb-4">Our Mission</h2>
-              <div className="w-16 h-1 bg-gold mb-6" />
-              <p className="text-gray-600 text-lg leading-relaxed">
-                {/* PLACEHOLDER: Replace with actual mission statement */}
-                To bridge the gap between sporting talent and opportunity by
-                providing grassroots programs, coaching, and infrastructure that
-                empower athletes from all backgrounds to realize their
-                potential.
-              </p>
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold text-navy mb-4">Our Vision</h2>
-              <div className="w-16 h-1 bg-gold mb-6" />
-              <p className="text-gray-600 text-lg leading-relaxed">
-                {/* PLACEHOLDER: Replace with actual vision statement */}
-                A India where every talented young person has access to sporting
-                opportunities, regardless of their economic background or
-                geographic location.
-              </p>
-            </div>
+            <ScrollReveal direction="left">
+              <div className="card-hover bg-cream rounded-2xl p-10">
+                <span className="text-crimson font-semibold text-sm uppercase tracking-widest">Purpose</span>
+                <h2 className="text-3xl font-bold text-navy mt-2 mb-4">Our Mission</h2>
+                <div className="w-16 h-1 bg-gold mb-6" />
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  To bridge the gap between sporting talent and opportunity by
+                  providing grassroots programs, coaching, and infrastructure that
+                  empower athletes from all backgrounds to realize their
+                  potential.
+                </p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal direction="right" delay={200}>
+              <div className="card-hover bg-cream rounded-2xl p-10">
+                <span className="text-crimson font-semibold text-sm uppercase tracking-widest">Aspiration</span>
+                <h2 className="text-3xl font-bold text-navy mt-2 mb-4">Our Vision</h2>
+                <div className="w-16 h-1 bg-gold mb-6" />
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  An India where every talented young person has access to sporting
+                  opportunities, regardless of their economic background or
+                  geographic location.
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* Our Story */}
-      <section className="py-20 bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="rounded-2xl overflow-hidden">
-              <Image
-                src="/images/founder.jpg"
-                alt="Founder — Khel Setu Foundation"
-                width={800}
-                height={600}
-                className="w-full h-auto"
-              />
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold text-navy mb-4">Our Story</h2>
-              <div className="w-16 h-1 bg-crimson mb-6" />
+      <section className="py-24 bg-cream relative overflow-hidden">
+        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gradient-to-tr from-navy/5 to-transparent blur-3xl" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <ScrollReveal direction="left">
+              <div className="relative rounded-2xl overflow-hidden group">
+                <Image
+                  src="/images/founder.jpg"
+                  alt="Founder — Khel Setu Foundation"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-gold/20 rounded-2xl -z-10" />
+              </div>
+            </ScrollReveal>
+            <ScrollReveal direction="right" delay={200}>
+              <div>
+                <span className="text-crimson font-semibold text-sm uppercase tracking-widest">Our Journey</span>
+                <h2 className="text-3xl font-bold text-navy mt-2 mb-4">Our Story</h2>
+                <div className="w-16 h-1 bg-crimson mb-6" />
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
                 {/* PLACEHOLDER: Replace with actual story */}
                 Khel Setu Foundation was born from a simple yet powerful belief:
@@ -83,20 +95,25 @@ export default function AboutPage() {
                 training programs, organizing tournaments, and supporting
                 athletes with scholarships.
               </p>
-            </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* Values */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Our Values
-            </h2>
-            <div className="w-20 h-1 bg-gold mx-auto" />
-          </div>
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-gold/5 via-transparent to-navy/5 blur-3xl" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="up">
+            <div className="text-center mb-16">
+              <span className="text-crimson font-semibold text-sm uppercase tracking-widest">What Drives Us</span>
+              <h2 className="text-3xl md:text-5xl font-bold text-navy mt-3 mb-4">
+                Our Values
+              </h2>
+              <div className="w-20 h-1 bg-gold mx-auto" />
+            </div>
+          </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
@@ -119,17 +136,16 @@ export default function AboutPage() {
                 title: "Excellence",
                 desc: "Striving for the highest standards in everything we do.",
               },
-            ].map((value) => (
-              <div
-                key={value.title}
-                className="text-center p-8 bg-cream rounded-xl"
-              >
-                <div className="text-4xl mb-4">{value.icon}</div>
-                <h3 className="text-xl font-bold text-navy mb-3">
-                  {value.title}
-                </h3>
-                <p className="text-gray-600 text-sm">{value.desc}</p>
-              </div>
+            ].map((value, i) => (
+              <ScrollReveal key={value.title} direction="up" delay={i * 100}>
+                <div className="card-hover text-center p-10 bg-cream rounded-2xl group">
+                  <div className="text-4xl mb-4 group-hover:scale-125 transition-transform duration-300">{value.icon}</div>
+                  <h3 className="text-xl font-bold text-navy mb-3">
+                    {value.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{value.desc}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -168,17 +184,21 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gold">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-navy mb-4">
-            Want to be part of our journey?
-          </h2>
-          <Link
-            href="/contact"
-            className="bg-navy text-white px-10 py-4 rounded-md font-bold text-lg hover:bg-navy-dark transition-colors duration-200 inline-block mt-4"
-          >
-            Get in Touch
-          </Link>
+      <section className="relative py-24 bg-gradient-to-br from-gold via-gold-light to-gold overflow-hidden">
+        <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-white/10 -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-navy/5 translate-x-1/3 translate-y-1/3" />
+        <div className="relative max-w-4xl mx-auto px-4 text-center">
+          <ScrollReveal direction="up">
+            <h2 className="text-3xl md:text-5xl font-bold text-navy mb-6 font-[var(--font-playfair)]">
+              Want to be part of our journey?
+            </h2>
+            <Link
+              href="/contact"
+              className="btn-shine bg-navy text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-navy-dark transition-all duration-300 hover:scale-105 inline-block shadow-2xl shadow-navy/20"
+            >
+              Get in Touch
+            </Link>
+          </ScrollReveal>
         </div>
       </section>
     </>

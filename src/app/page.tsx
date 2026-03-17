@@ -1,7 +1,54 @@
 import Image from "next/image";
 import Link from "next/link";
+import ScrollReveal from "@/components/ScrollReveal";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
-/* ───────── HERO SECTION ───────── */
+/* ──────────────────── WAVE DIVIDER SVG ──────────────────── */
+function WaveDivider({ color = "#FAF8F5", flip = false }: { color?: string; flip?: boolean }) {
+  return (
+    <div className={`absolute left-0 w-full overflow-hidden leading-[0] ${flip ? "top-[-1px] rotate-180" : "bottom-[-1px]"}`}>
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[60px] md:h-[80px]">
+        <path
+          d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+          fill={color}
+          opacity="0.25"
+        />
+        <path
+          d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+          fill={color}
+          opacity="0.5"
+        />
+        <path
+          d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+          fill={color}
+        />
+      </svg>
+    </div>
+  );
+}
+
+/* ──────────────────── FLOATING DECORATIONS ──────────────────── */
+function FloatingShapes() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Gold circle */}
+      <div className="absolute top-[15%] left-[8%] w-20 h-20 rounded-full border-2 border-gold/20 animate-float" />
+      {/* Crimson dot */}
+      <div className="absolute top-[30%] right-[12%] w-4 h-4 rounded-full bg-crimson/30 animate-float-slow" />
+      {/* Navy ring */}
+      <div className="absolute bottom-[20%] left-[15%] w-12 h-12 rounded-full border border-gold/15 animate-pulse-glow" />
+      {/* Gold diamond */}
+      <div className="absolute top-[60%] right-[8%] w-8 h-8 border border-gold/20 rotate-45 animate-float" />
+      {/* Small dots scattered */}
+      <div className="absolute top-[45%] left-[25%] w-2 h-2 rounded-full bg-gold/25 animate-float-slow" />
+      <div className="absolute top-[75%] right-[25%] w-3 h-3 rounded-full bg-white/10 animate-float" />
+      {/* Large faded circle */}
+      <div className="absolute -bottom-16 -right-16 w-64 h-64 rounded-full border border-gold/10 animate-spin-slow" />
+    </div>
+  );
+}
+
+/* ──────────────────── HERO SECTION ──────────────────── */
 function HeroSection() {
   const heroImages = ["/images/founder.jpg", "/images/founder2.jpg", "/images/launch.jpg"];
 
@@ -12,7 +59,6 @@ function HeroSection() {
         className="absolute inset-0 flex animate-slide"
         style={{ width: `${heroImages.length * 50}%` }}
       >
-        {/* Double the images for seamless loop */}
         {[...heroImages, ...heroImages].map((src, i) => (
           <div
             key={i}
@@ -29,71 +75,99 @@ function HeroSection() {
           </div>
         ))}
       </div>
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-navy/75" />
+
+      {/* Dark gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy/90" />
+
+      {/* Gradient mesh overlay for depth */}
+      <div className="absolute inset-0 gradient-mesh" />
+
+      {/* Floating decorative elements */}
+      <FloatingShapes />
+
+      {/* Content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-        <h1 className="font-[var(--font-playfair)] italic text-4xl md:text-6xl font-bold mb-6 leading-tight">
-          <span className="text-white">Bridging </span>
-          <span className="text-gold">Sports</span>
-          <span className="text-white"> & Opportunity</span>
+        {/* Small tag above heading */}
+        <div className="inline-flex items-center gap-2 glass px-5 py-2 rounded-full mb-8">
+          <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+          <span className="text-gold/90 text-sm font-medium tracking-wider uppercase">
+            Bridging Sports &amp; Opportunity
+          </span>
+        </div>
+
+        <h1 className="font-[var(--font-playfair)] italic text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1]">
+          <span className="text-white">Khel</span>{" "}
+          <span className="text-gradient">Setu</span>
         </h1>
-        <p className="text-white text-lg md:text-xl mb-4 leading-relaxed">
+
+        <p className="text-white/80 text-lg md:text-xl mb-4 leading-relaxed max-w-2xl mx-auto font-[var(--font-playfair)] italic">
           हो गई है पीर पर्वत सी, पिघलनी चाहिए<br />
           इस हिमालय से कोई गंगा निकलनी चाहिए।
         </p>
-        <p className="text-gold italic font-semibold text-lg md:text-xl tracking-wide mb-10">
+
+        <p className="text-gold italic font-semibold text-lg md:text-xl tracking-wide mb-12">
           #ChooseSportsNotDrugs
         </p>
+
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/contact"
-            className="bg-gold text-navy px-8 py-3 rounded-md font-bold text-lg hover:bg-gold-light transition-colors duration-200"
+            className="btn-shine bg-gold text-navy px-10 py-4 rounded-full font-bold text-lg hover:bg-gold-light transition-all duration-300 hover:scale-105"
           >
             Get Involved
           </Link>
           <Link
             href="/projects"
-            className="border-2 border-white text-white px-8 py-3 rounded-md font-bold text-lg hover:bg-white hover:text-navy transition-colors duration-200"
+            className="glass text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/15 transition-all duration-300 hover:scale-105"
           >
-            Our Initiatives
+            Our Initiatives →
           </Link>
         </div>
       </div>
+
+      {/* Bottom wave into next section */}
+      <WaveDivider color="#FAF8F5" />
     </section>
   );
 }
 
-/* ───────── IMPACT NUMBERS ───────── */
+/* ──────────────────── IMPACT NUMBERS ──────────────────── */
 function ImpactNumbers() {
   const stats = [
-    // PLACEHOLDER: Replace with actual numbers
-    { number: "500+", label: "Athletes Supported" },
-    { number: "20+", label: "Programs" },
-    { number: "10+", label: "States Reached" },
-    { number: "50+", label: "Community Events" },
+    { number: "500+", label: "Athletes Supported", icon: "🏅" },
+    { number: "20+", label: "Programs", icon: "📋" },
+    { number: "10+", label: "States Reached", icon: "🗺️" },
+    { number: "50+", label: "Community Events", icon: "🎯" },
   ];
 
   return (
-    <section className="bg-cream py-16">
+    <section className="relative bg-cream py-20 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-navy mb-2">
-                {stat.number}
-              </div>
-              <div className="text-gold font-semibold uppercase tracking-wider text-sm">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
+        <ScrollReveal direction="up">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            {stats.map((stat, i) => (
+              <ScrollReveal key={stat.label} direction="up" delay={i * 150}>
+                <div className="text-center group">
+                  <div className="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">
+                    {stat.icon}
+                  </div>
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-2">
+                    <AnimatedCounter target={stat.number} />
+                  </div>
+                  <div className="text-gold font-semibold uppercase tracking-wider text-xs md:text-sm">
+                    {stat.label}
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
 }
 
-/* ───────── OUR PROJECTS ───────── */
+/* ──────────────────── OUR PROJECTS ──────────────────── */
 function ProjectsPreview() {
   const projects = [
     {
@@ -102,6 +176,7 @@ function ProjectsPreview() {
       subtitle: "Sports Recognition",
       desc: "Giving recognition and platforms to grassroots athletes who deserve to be seen, celebrated, and supported in their sporting journey.",
       href: "/projects#playfree",
+      accent: "from-gold/10 to-transparent",
     },
     {
       icon: "🏃",
@@ -109,6 +184,7 @@ function ProjectsPreview() {
       subtitle: "Fitness & Wellbeing",
       desc: "Promoting fitness, mental health, and overall wellbeing through structured sports activities and community wellness programs.",
       href: "/projects#endorphin",
+      accent: "from-crimson/10 to-transparent",
     },
     {
       icon: "💪",
@@ -116,6 +192,7 @@ function ProjectsPreview() {
       subtitle: "Women Empowerment",
       desc: "Empowering women through sports — breaking barriers, building confidence, and creating pathways to independence and self-reliance.",
       href: "/projects#mukti",
+      accent: "from-navy/10 to-transparent",
     },
     {
       icon: "🔄",
@@ -123,6 +200,7 @@ function ProjectsPreview() {
       subtitle: "Sports Beyond Retirement",
       desc: "Helping retired and senior athletes find purpose, stay active, and contribute to sports development through coaching and mentorship.",
       href: "/projects#second-innings",
+      accent: "from-gold/10 to-transparent",
     },
     {
       icon: "📚",
@@ -130,189 +208,245 @@ function ProjectsPreview() {
       subtitle: "Education Through Sports",
       desc: "Bridging education and athletics — ensuring young athletes have access to learning resources and academic support alongside their training.",
       href: "/projects#bookrise",
+      accent: "from-crimson/10 to-transparent",
     },
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-            Our Projects
-          </h2>
-          <div className="w-20 h-1 bg-gold mx-auto mb-6" />
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            {/* PLACEHOLDER: Replace with actual description */}
-            Focused initiatives driving real change through sports and community
-            empowerment.
-          </p>
-        </div>
+    <section className="relative py-24 bg-white overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gradient-to-br from-gold/5 to-transparent blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gradient-to-tr from-navy/5 to-transparent blur-3xl" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ScrollReveal direction="up">
+          <div className="text-center mb-16">
+            <span className="text-crimson font-semibold text-sm uppercase tracking-widest">
+              What We Do
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-navy mt-3 mb-4">
+              Our Projects
+            </h2>
+            <div className="w-20 h-1 bg-gold mx-auto mb-6" />
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Focused initiatives driving real change through sports and community
+              empowerment.
+            </p>
+          </div>
+        </ScrollReveal>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {projects.map((project) => (
-            <Link
-              key={project.title}
-              href={project.href}
-              className="bg-cream rounded-xl p-10 hover:shadow-lg transition-shadow duration-300 border border-gray-100 block"
-            >
-              <div className="text-5xl mb-4">{project.icon}</div>
-              <h3 className="text-2xl font-bold text-navy mb-1">
-                {project.title}
-              </h3>
-              <p className="text-gold font-semibold text-sm uppercase tracking-wider mb-4">
-                {project.subtitle}
-              </p>
-              <p className="text-gray-600">{project.desc}</p>
-              <span className="text-navy font-semibold text-sm mt-4 inline-block">
-                Learn More →
-              </span>
-            </Link>
+          {projects.map((project, i) => (
+            <ScrollReveal key={project.title} direction="up" delay={i * 100}>
+              <Link
+                href={project.href}
+                className={`card-hover relative bg-white rounded-2xl p-10 border border-gray-100 block overflow-hidden group`}
+              >
+                {/* Gradient accent on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+
+                <div className="relative">
+                  <div className="text-5xl mb-5 group-hover:scale-110 transition-transform duration-300">{project.icon}</div>
+                  <h3 className="text-2xl font-bold text-navy mb-1">
+                    {project.title}
+                  </h3>
+                  <p className="text-gold font-semibold text-sm uppercase tracking-wider mb-4">
+                    {project.subtitle}
+                  </p>
+                  <p className="text-gray-600 leading-relaxed">{project.desc}</p>
+                  <span className="inline-flex items-center gap-2 text-navy font-semibold text-sm mt-6 group-hover:gap-3 transition-all duration-300">
+                    Learn More
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  </span>
+                </div>
+              </Link>
+            </ScrollReveal>
           ))}
         </div>
-        <div className="text-center mt-12">
-          <Link
-            href="/projects"
-            className="bg-navy text-white px-8 py-3 rounded-md font-semibold hover:bg-navy-light transition-colors duration-200"
-          >
-            Explore All Projects
-          </Link>
-        </div>
+
+        <ScrollReveal direction="up" delay={300}>
+          <div className="text-center mt-14">
+            <Link
+              href="/projects"
+              className="btn-shine bg-navy text-white px-10 py-4 rounded-full font-semibold hover:bg-navy-light transition-all duration-300 hover:scale-105 inline-block"
+            >
+              Explore All Projects
+            </Link>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
 }
 
-/* ───────── ABOUT SNIPPET ───────── */
+/* ──────────────────── ABOUT SNIPPET ──────────────────── */
 function AboutSnippet() {
   return (
-    <section className="py-20 bg-navy">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              About <span className="text-gold">Khel Setu</span> Foundation
-            </h2>
-            <div className="w-20 h-1 bg-crimson mb-6" />
-            <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              {/* PLACEHOLDER: Replace with actual about text */}
-              &ldquo;Khel Setu&rdquo; means &ldquo;Bridge of Sports.&rdquo; We
-              believe that sports have the power to transform lives, bridge
-              divides, and create pathways to a brighter future. Our foundation
-              works tirelessly to bring sporting opportunities to every corner of
-              India.
-            </p>
-            <p className="text-gray-300 text-lg leading-relaxed mb-8">
-              {/* PLACEHOLDER: Replace with more about text */}
-              From grassroots football programs to athlete scholarships, we are
-              building a movement that puts sports at the heart of community
-              development and youth empowerment.
-            </p>
-            <Link
-              href="/about"
-              className="text-gold font-semibold text-lg hover:text-gold-light transition-colors inline-flex items-center gap-2"
-            >
-              Know More →
-            </Link>
-          </div>
-          <div className="bg-navy-light rounded-2xl h-80 flex items-center justify-center">
-            {/* PLACEHOLDER: Replace with actual image */}
-            <span className="text-gray-500 text-sm">
-              [Image placeholder — Foundation team / sports event]
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+    <section className="relative py-24 bg-navy overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-gold/5 to-transparent blur-3xl" />
+      <FloatingShapes />
 
-/* ───────── OUR IMPACT PREVIEW ───────── */
-function ImpactPreview() {
-  return (
-    <section className="py-20 bg-cream">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-            Our Impact
-          </h2>
-          <div className="w-20 h-1 bg-gold mx-auto mb-6" />
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            {/* PLACEHOLDER: Replace with actual description */}
-            From grassroots fields to national stages — see how we are making a
-            difference across communities.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Lives Transformed Through Sport",
-              desc: "Athletes from underprivileged backgrounds gaining access to professional training and competitive platforms.",
-            },
-            {
-              title: "Communities United",
-              desc: "Sports events bringing together people across ages, genders, and backgrounds to build stronger communities.",
-            },
-            {
-              title: "Women Breaking Barriers",
-              desc: "Through Project Mukti, women are discovering confidence, leadership, and independence through sports.",
-            },
-          ].map((item) => (
-            <div
-              key={item.title}
-              className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
-            >
-              {/* PLACEHOLDER: Replace with actual impact image */}
-              <div className="h-48 bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-400 text-sm">
-                  [Impact image placeholder]
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <ScrollReveal direction="left">
+            <div>
+              <span className="text-crimson font-semibold text-sm uppercase tracking-widest">
+                Who We Are
+              </span>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mt-3 mb-4">
+                About <span className="text-gradient">Khel Setu</span> Foundation
+              </h2>
+              <div className="w-20 h-1 bg-crimson mb-8" />
+              <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                &ldquo;Khel Setu&rdquo; means &ldquo;Bridge of Sports.&rdquo; We
+                believe that sports have the power to transform lives, bridge
+                divides, and create pathways to a brighter future. Our foundation
+                works tirelessly to bring sporting opportunities to every corner of
+                India.
+              </p>
+              <p className="text-gray-300 text-lg leading-relaxed mb-10">
+                From grassroots football programs to athlete scholarships, we are
+                building a movement that puts sports at the heart of community
+                development and youth empowerment.
+              </p>
+              <Link
+                href="/about"
+                className="btn-shine inline-flex items-center gap-3 bg-gold/10 border border-gold/30 text-gold px-8 py-3 rounded-full font-semibold hover:bg-gold/20 transition-all duration-300 group"
+              >
+                Know More
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </Link>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal direction="right" delay={200}>
+            <div className="relative">
+              <div className="placeholder-gradient rounded-2xl h-96 flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 border-2 border-dashed border-gray-300/50 rounded-2xl m-4" />
+                <span className="text-gray-400 text-sm z-10">
+                  [Foundation team / sports event photo]
                 </span>
               </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold text-navy mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 text-sm">{item.desc}</p>
-              </div>
+              {/* Decorative offset border */}
+              <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-gold/20 rounded-2xl -z-10" />
             </div>
+          </ScrollReveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ──────────────────── OUR IMPACT PREVIEW ──────────────────── */
+function ImpactPreview() {
+  const impacts = [
+    {
+      title: "Lives Transformed Through Sport",
+      desc: "Athletes from underprivileged backgrounds gaining access to professional training and competitive platforms.",
+      icon: "🌟",
+    },
+    {
+      title: "Communities United",
+      desc: "Sports events bringing together people across ages, genders, and backgrounds to build stronger communities.",
+      icon: "🤝",
+    },
+    {
+      title: "Women Breaking Barriers",
+      desc: "Through Project Mukti, women are discovering confidence, leadership, and independence through sports.",
+      icon: "💪",
+    },
+  ];
+
+  return (
+    <section className="relative py-24 bg-cream overflow-hidden">
+      {/* Background shape */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-gold/5 via-transparent to-navy/5 blur-3xl" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ScrollReveal direction="up">
+          <div className="text-center mb-16">
+            <span className="text-crimson font-semibold text-sm uppercase tracking-widest">
+              Making A Difference
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-navy mt-3 mb-4">
+              Our Impact
+            </h2>
+            <div className="w-20 h-1 bg-gold mx-auto mb-6" />
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              From grassroots fields to national stages — see how we are making a
+              difference across communities.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {impacts.map((item, i) => (
+            <ScrollReveal key={item.title} direction="up" delay={i * 150}>
+              <div className="card-hover bg-white rounded-2xl overflow-hidden group">
+                <div className="h-52 placeholder-gradient flex items-center justify-center relative">
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent" />
+                  <span className="text-6xl relative z-10 group-hover:scale-110 transition-transform duration-300">{item.icon}</span>
+                </div>
+                <div className="p-8">
+                  <h3 className="text-xl font-bold text-navy mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            </ScrollReveal>
           ))}
         </div>
-        <div className="text-center mt-12">
-          <Link
-            href="/impact"
-            className="bg-navy text-white px-8 py-3 rounded-md font-semibold hover:bg-navy-light transition-colors duration-200"
-          >
-            See Our Full Impact
-          </Link>
-        </div>
+
+        <ScrollReveal direction="up" delay={300}>
+          <div className="text-center mt-14">
+            <Link
+              href="/impact"
+              className="btn-shine bg-navy text-white px-10 py-4 rounded-full font-semibold hover:bg-navy-light transition-all duration-300 hover:scale-105 inline-block"
+            >
+              See Our Full Impact
+            </Link>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
 }
 
-/* ───────── CTA SECTION ───────── */
+/* ──────────────────── CTA SECTION ──────────────────── */
 function CTASection() {
   return (
-    <section className="py-16 bg-gold">
-      <div className="max-w-4xl mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-          Join the Movement
-        </h2>
-        <p className="text-navy-light text-lg mb-8">
-          {/* PLACEHOLDER */}
-          Whether you want to volunteer, donate, or partner with us — there are
-          many ways to make a difference.
-        </p>
-        <Link
-          href="/contact"
-          className="bg-navy text-white px-10 py-4 rounded-md font-bold text-lg hover:bg-navy-dark transition-colors duration-200"
-        >
-          Get in Touch
-        </Link>
+    <section className="relative py-24 bg-gradient-to-br from-gold via-gold-light to-gold overflow-hidden">
+      {/* Decorative shapes */}
+      <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-white/10 -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-navy/5 translate-x-1/3 translate-y-1/3" />
+
+      <div className="relative max-w-4xl mx-auto px-4 text-center">
+        <ScrollReveal direction="up">
+          <span className="text-navy/60 font-semibold text-sm uppercase tracking-widest">
+            Be The Change
+          </span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mt-4 mb-6 font-[var(--font-playfair)]">
+            Join the Movement
+          </h2>
+          <p className="text-navy/70 text-xl mb-10 max-w-2xl mx-auto">
+            Whether you want to volunteer, donate, or partner with us — there are
+            many ways to make a difference.
+          </p>
+          <Link
+            href="/contact"
+            className="btn-shine bg-navy text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-navy-dark transition-all duration-300 hover:scale-105 inline-block shadow-2xl shadow-navy/20"
+          >
+            Get in Touch
+          </Link>
+        </ScrollReveal>
       </div>
     </section>
   );
 }
 
-/* ───────── HOME PAGE ───────── */
+/* ──────────────────── HOME PAGE ──────────────────── */
 export default function HomePage() {
   return (
     <>

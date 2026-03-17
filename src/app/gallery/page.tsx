@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Gallery — Khel Setu Foundation",
@@ -54,7 +55,7 @@ export default function GalleryPage() {
   return (
     <>
       {/* Page Hero */}
-      <section className="bg-navy py-20">
+      <section className="bg-navy pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Our <span className="text-gold">Gallery</span>
@@ -70,29 +71,30 @@ export default function GalleryPage() {
       {galleryCategories.map((category, catIndex) => (
         <section
           key={category.title}
-          className={`py-16 ${catIndex % 2 === 0 ? "bg-white" : "bg-cream"}`}
+          className={`py-20 ${catIndex % 2 === 0 ? "bg-white" : "bg-cream"}`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-10">
-              <h2 className="text-2xl md:text-3xl font-bold text-navy mb-2">
-                {category.title}
-              </h2>
-              <p className="text-gold font-semibold text-sm uppercase tracking-wider">
-                {category.description}
-              </p>
-              <div className="w-12 h-1 bg-crimson mt-3" />
-            </div>
+            <ScrollReveal direction="up">
+              <div className="mb-10">
+                <span className="text-crimson font-semibold text-sm uppercase tracking-widest">
+                  {category.description}
+                </span>
+                <h2 className="text-2xl md:text-3xl font-bold text-navy mt-2 mb-2">
+                  {category.title}
+                </h2>
+                <div className="w-12 h-1 bg-gold mt-3" />
+              </div>
+            </ScrollReveal>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {category.images.map((image, i) => (
-                <div
-                  key={i}
-                  className="aspect-square bg-gray-200 rounded-lg flex items-center justify-center hover:opacity-90 transition-opacity cursor-pointer"
-                >
-                  {/* PLACEHOLDER: Replace with actual Image components */}
-                  <span className="text-gray-400 text-xs text-center px-2">
-                    [Photo: {image.alt}]
-                  </span>
-                </div>
+                <ScrollReveal key={i} direction="up" delay={i * 80}>
+                  <div className="aspect-square placeholder-gradient rounded-2xl flex items-center justify-center cursor-pointer group overflow-hidden relative">
+                    <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/30 transition-colors duration-300 rounded-2xl" />
+                    <span className="text-gray-400 text-xs text-center px-2 group-hover:text-white/80 transition-colors duration-300 relative z-10">
+                      {image.alt}
+                    </span>
+                  </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>

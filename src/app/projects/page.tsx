@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Our Projects — Khel Setu Foundation",
@@ -11,7 +12,7 @@ export default function ProjectsPage() {
   return (
     <>
       {/* Page Hero */}
-      <section className="bg-navy py-20">
+      <section className="bg-navy pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Our <span className="text-gold">Projects</span>

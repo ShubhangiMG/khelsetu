@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ScrollReveal from "@/components/ScrollReveal";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 export const metadata: Metadata = {
   title: "Our Impact — Khel Setu Foundation",
@@ -11,7 +13,7 @@ export default function ImpactPage() {
   return (
     <>
       {/* Page Hero */}
-      <section className="bg-navy py-20">
+      <section className="bg-navy pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Our <span className="text-gold">Impact</span>
@@ -24,24 +26,28 @@ export default function ImpactPage() {
       </section>
 
       {/* Impact Numbers */}
-      <section className="py-16 bg-cream">
+      <section className="py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {/* PLACEHOLDER: Replace with actual impact numbers */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
-              { number: "500+", label: "Athletes Supported" },
-              { number: "20+", label: "Programs Run" },
-              { number: "10+", label: "States Reached" },
-              { number: "50+", label: "Events Organized" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-navy mb-2">
-                  {stat.number}
+              { number: "500+", label: "Athletes Supported", icon: "🏅" },
+              { number: "20+", label: "Programs Run", icon: "📋" },
+              { number: "10+", label: "States Reached", icon: "🗺️" },
+              { number: "50+", label: "Events Organized", icon: "🎯" },
+            ].map((stat, i) => (
+              <ScrollReveal key={stat.label} direction="up" delay={i * 150}>
+                <div className="text-center group">
+                  <div className="text-3xl mb-3 group-hover:scale-125 transition-transform duration-300">
+                    {stat.icon}
+                  </div>
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-2">
+                    <AnimatedCounter target={stat.number} />
+                  </div>
+                  <div className="text-gold font-semibold uppercase tracking-wider text-xs md:text-sm">
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="text-gold font-semibold uppercase tracking-wider text-sm">
-                  {stat.label}
-                </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
