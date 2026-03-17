@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import { projects as projectsData } from "@/lib/siteConfig";
-import { getProjectImages } from "@/lib/getImages";
+import { getProjectImagesWithSize, type ImageInfo } from "@/lib/getImages";
 
 export const metadata: Metadata = {
   title: "Our Projects — Khel Setu Foundation",
@@ -12,13 +12,13 @@ export const metadata: Metadata = {
 };
 
 /* Build-time image scanning — drop new photos into the folder and rebuild */
-const projectImages: Record<string, string[]> = {
-  playfree: getProjectImages("playfree"),
-  endorphin: getProjectImages("endorphin"),
-  lifeready: getProjectImages("lifeready"),
-  readrise: getProjectImages("readrise"),
-  mukti: getProjectImages("mukti"),
-  "second-innings": getProjectImages("second-innings"),
+const projectImages: Record<string, ImageInfo[]> = {
+  playfree: getProjectImagesWithSize("playfree"),
+  endorphin: getProjectImagesWithSize("endorphin"),
+  lifeready: getProjectImagesWithSize("lifeready"),
+  readrise: getProjectImagesWithSize("readrise"),
+  mukti: getProjectImagesWithSize("mukti"),
+  "second-innings": getProjectImagesWithSize("second-innings"),
 };
 
 function ProjectImageGrid({ folder, icon, name }: { folder: string; icon: string; name: string }) {
@@ -39,25 +39,23 @@ function ProjectImageGrid({ folder, icon, name }: { folder: string; icon: string
 
   return (
     <div className="lg:sticky lg:top-36 space-y-4">
-      <div className="rounded-2xl overflow-hidden">
+      <div className="rounded-2xl overflow-hidden h-64 relative">
         <Image
-          src={main}
+          src={main.src}
           alt={`${name} project`}
-          width={800}
-          height={600}
-          className="w-full h-auto hover:scale-105 transition-transform duration-700"
+          fill
+          className="object-cover hover:scale-105 transition-transform duration-700"
         />
       </div>
       {rest.length > 0 && (
         <div className="grid grid-cols-2 gap-4">
-          {rest.slice(0, 6).map((src, i) => (
-            <div key={src} className="rounded-xl overflow-hidden">
+          {rest.slice(0, 4).map((img, i) => (
+            <div key={img.src} className="rounded-xl overflow-hidden h-40 relative">
               <Image
-                src={src}
+                src={img.src}
                 alt={`${name} photo ${i + 2}`}
-                width={400}
-                height={300}
-                className="w-full h-auto hover:scale-105 transition-transform duration-500"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
           ))}
@@ -145,16 +143,6 @@ export default function ProjectsPage() {
                     </div>
                   ))}
                 </div>
-
-                {/* Resource Download */}
-                <a
-                  href="/documents/PlayFree-Overview.pdf"
-                  download
-                  className="inline-flex items-center gap-2 bg-navy/5 hover:bg-navy/10 text-navy font-semibold text-sm px-5 py-3 rounded-lg transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                  Download Project Overview (PDF)
-                </a>
               </div>
             </ScrollReveal>
             <ScrollReveal direction="right" delay={200}>
@@ -212,15 +200,6 @@ export default function ProjectsPage() {
                     </div>
                   ))}
                 </div>
-
-                <a
-                  href="/documents/Endorphin-Overview.pdf"
-                  download
-                  className="inline-flex items-center gap-2 bg-navy/5 hover:bg-navy/10 text-navy font-semibold text-sm px-5 py-3 rounded-lg transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                  Download Project Overview (PDF)
-                </a>
               </div>
             </ScrollReveal>
           </div>
@@ -272,15 +251,6 @@ export default function ProjectsPage() {
                     </div>
                   ))}
                 </div>
-
-                <a
-                  href="/documents/LifeReady-Overview.pdf"
-                  download
-                  className="inline-flex items-center gap-2 bg-navy/5 hover:bg-navy/10 text-navy font-semibold text-sm px-5 py-3 rounded-lg transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                  Download Project Overview (PDF)
-                </a>
               </div>
             </ScrollReveal>
             <ScrollReveal direction="right" delay={200}>
@@ -338,15 +308,6 @@ export default function ProjectsPage() {
                     </div>
                   ))}
                 </div>
-
-                <a
-                  href="/documents/ReadRise-Overview.pdf"
-                  download
-                  className="inline-flex items-center gap-2 bg-navy/5 hover:bg-navy/10 text-navy font-semibold text-sm px-5 py-3 rounded-lg transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                  Download Project Overview (PDF)
-                </a>
               </div>
             </ScrollReveal>
           </div>
@@ -398,15 +359,6 @@ export default function ProjectsPage() {
                     </div>
                   ))}
                 </div>
-
-                <a
-                  href="/documents/Mukti-Overview.pdf"
-                  download
-                  className="inline-flex items-center gap-2 bg-navy/5 hover:bg-navy/10 text-navy font-semibold text-sm px-5 py-3 rounded-lg transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                  Download Project Overview (PDF)
-                </a>
               </div>
             </ScrollReveal>
             <ScrollReveal direction="right" delay={200}>
@@ -464,15 +416,6 @@ export default function ProjectsPage() {
                     </div>
                   ))}
                 </div>
-
-                <a
-                  href="/documents/SecondInnings-Overview.pdf"
-                  download
-                  className="inline-flex items-center gap-2 bg-navy/5 hover:bg-navy/10 text-navy font-semibold text-sm px-5 py-3 rounded-lg transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                  Download Project Overview (PDF)
-                </a>
               </div>
             </ScrollReveal>
           </div>
