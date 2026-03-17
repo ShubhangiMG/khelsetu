@@ -23,6 +23,9 @@ export default function AboutPage() {
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             It did not begin with a grand vision. It began with a question.
           </p>
+          <p className="font-[var(--font-playfair)] italic text-2xl md:text-3xl text-gold mt-6 max-w-2xl mx-auto leading-snug">
+            &ldquo;What if sports could heal what society struggles to fix?&rdquo;
+          </p>
         </div>
       </section>
 
@@ -42,18 +45,6 @@ export default function AboutPage() {
                 {siteConfig.missionChallenges}
               </p>
             </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* The Question */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gradient-to-bl from-gold/5 to-transparent blur-3xl" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <ScrollReveal direction="up">
-            <p className="font-[var(--font-playfair)] italic text-3xl md:text-4xl text-navy leading-snug">
-              &ldquo;What if sports could heal what society struggles to fix?&rdquo;
-            </p>
           </ScrollReveal>
         </div>
       </section>
@@ -280,7 +271,7 @@ export default function AboutPage() {
                 <Link href={item.href} className="card-hover bg-cream rounded-2xl p-8 text-center block group">
                   <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
                   <p className="text-gold font-semibold text-sm uppercase tracking-wider mb-1">{item.subtitle}</p>
-                  <p className="text-navy text-xl font-bold">through {item.name}</p>
+                  <p className="text-navy text-xl font-bold">Project {item.name}</p>
                 </Link>
               </ScrollReveal>
             ))}
@@ -299,8 +290,14 @@ export default function AboutPage() {
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={100}>
-            <div className="w-40 h-40 rounded-full placeholder-gradient mx-auto mb-8 flex items-center justify-center border-4 border-gold/20">
-              <span className="text-gray-400 text-xs">[Photo]</span>
+            <div className="rounded-2xl overflow-hidden mx-auto mb-8 max-w-sm border-4 border-gold/20">
+              <Image
+                src="/images/ourFounder.png"
+                alt={siteConfig.founder.name}
+                width={400}
+                height={500}
+                className="w-full h-auto object-cover"
+              />
             </div>
           </ScrollReveal>
 

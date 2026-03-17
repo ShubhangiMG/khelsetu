@@ -42,10 +42,11 @@ export const siteConfig = {
   },
 
   social: {
-    facebook: "#",
-    instagram: "#",
-    twitter: "#",
-    youtube: "#",
+    facebook: "https://www.facebook.com/profile.php?id=61582149836146",
+    instagram: "https://www.instagram.com/khelsetu/",
+    twitter: "https://x.com/khelsetu",
+    youtube: "https://youtube.com/@khelsetufoundation?si=d5GtXDF1cW4oVHgO",
+    linkedin: "https://www.linkedin.com/company/khelsetu/"
   },
 
   stats: {

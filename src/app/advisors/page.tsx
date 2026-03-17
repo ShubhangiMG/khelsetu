@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -8,24 +9,40 @@ export const metadata: Metadata = {
 };
 
 const advisors = [
-  // PLACEHOLDER: Replace with actual advisor details
   {
-    name: "[Advisor Name 1]",
-    title: "[Designation / Title]",
-    organization: "[Organization]",
-    bio: "A seasoned leader providing strategic guidance to help the foundation maximize its impact across communities.",
+    name: "Ridhhi Chandrawat",
+    title: "Advocate",
+    organization: "Abhyutthanam Society",
+    bio: "A legal professional and social activist providing strategic guidance on rights-based approaches to help the foundation maximize its impact across communities.",
+    photo: "/images/advisors/advisor3.jpg",
   },
   {
-    name: "[Advisor Name 2]",
-    title: "[Designation / Title]",
-    organization: "[Organization]",
-    bio: "Bringing deep expertise in sports management and community development to shape the foundation's programs.",
+    name: "Pranjal Singh",
+    title: "Advocate & RTE Activist",
+    organization: "Abhyutthanam Society",
+    bio: "An advocate and Right to Education activist bringing legal expertise and grassroots advocacy experience to strengthen the foundation's education and empowerment initiatives.",
+    photo: "/images/advisors/advisor5.jpg",
   },
   {
-    name: "[Advisor Name 3]",
-    title: "[Designation / Title]",
-    organization: "[Organization]",
-    bio: "An advocate for youth empowerment through sports, helping connect the foundation with broader networks and opportunities.",
+    name: "Pratibha Jhingan",
+    title: "Assistant Faculty",
+    organization: "Next IAS",
+    bio: "An educator shaping future civil servants, bringing deep expertise in public policy and governance to guide the foundation's strategic direction and program design.",
+    photo: "/images/advisors/advisor4.png",
+  },
+  {
+    name: "Shashank Garg",
+    title: "Academic Associate",
+    organization: "IIM Indore",
+    bio: "An academic associate at one of India's premier management institutes, bringing research-driven insights and strategic thinking to strengthen the foundation's programs and outreach.",
+    photo: "/images/advisors/advisor2.jpg",
+  },
+  {
+    name: "Shubhangi Garg",
+    title: "Software Engineer",
+    organization: "Microsoft",
+    bio: "A technology professional driving the foundation's digital presence and leveraging technical expertise to amplify community outreach and impact.",
+    photo: "",
   },
 ];
 
@@ -54,9 +71,13 @@ export default function AdvisorsPage() {
                 key={advisor.name}
                 className="bg-white rounded-xl p-8 text-center shadow-sm hover:shadow-md transition-shadow duration-300"
               >
-                {/* PLACEHOLDER: Replace with actual advisor photo */}
-                <div className="w-36 h-36 rounded-full bg-gray-200 mx-auto mb-6 flex items-center justify-center">
-                  <span className="text-gray-400 text-sm">[Photo]</span>
+                <div className="w-36 h-36 rounded-full mx-auto mb-6 overflow-hidden relative">
+                  <Image
+                    src={advisor.photo}
+                    alt={advisor.name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <h3 className="text-xl font-bold text-navy">{advisor.name}</h3>
                 <p className="text-gold font-semibold text-sm mt-1">
