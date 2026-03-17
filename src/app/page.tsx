@@ -340,9 +340,9 @@ function PartnersSection() {
               <Image
                 src={logo.src}
                 alt={logo.alt}
-                width={140}
-                height={70}
-                className="h-16 w-auto object-contain"
+                width={180}
+                height={90}
+                className="h-24 w-auto object-contain"
               />
             </div>
           ))}

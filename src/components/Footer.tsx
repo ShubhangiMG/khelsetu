@@ -96,7 +96,7 @@ export default function Footer() {
               alt={siteConfig.name}
               width={280}
               height={180}
-              className="mt-6 opacity-80"
+              className="mt-6"
             />
           </div>
         </div>
