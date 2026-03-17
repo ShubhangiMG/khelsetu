@@ -152,6 +152,7 @@ export default function ContactPage() {
                     <option value="donate">Donate</option>
                     <option value="partner">Partnership</option>
                     <option value="media">Media</option>
+                    <option value="media">Internship</option>
                   </select>
                 </div>
                 <div>

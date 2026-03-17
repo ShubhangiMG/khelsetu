@@ -6,21 +6,21 @@ const testimonials = [
   {
     quote:
       "Khel Setu Foundation is doing incredible work in using sports as a tool for social change. Their approach to mental health awareness through community engagement is truly inspiring.",
-    name: "Testimonial 1",
+    name: "Ramesh",
     role: "Community Member",
     initials: "T1",
   },
   {
     quote:
       "The PlayFree initiative opened my eyes to how sports can transform communities dealing with substance abuse. The passion and dedication of the team is remarkable.",
-    name: "Testimonial 2",
+    name: "Payal",
     role: "Volunteer",
     initials: "T2",
   },
   {
     quote:
       "What sets Khel Setu apart is their holistic approach — from youth engagement to elderly welfare, they are building something truly meaningful for Rajasthan.",
-    name: "Testimonial 3",
+    name: "Om Prakash",
     role: "Supporter",
     initials: "T3",
   },

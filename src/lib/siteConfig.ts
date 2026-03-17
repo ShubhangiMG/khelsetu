@@ -34,7 +34,7 @@ export const siteConfig = {
       full: "Plot No. 20, Ganga Sagar Vistar, Jagdamba Colony, Agra Road, Jaipur, Rajasthan - 302031",
     },
     phone: "+91 8094939595",
-    email: "khelsetu.org@gmail.com",
+    email: "info@khelsetu.org",
     hours: {
       weekdays: "Monday – Saturday: 10:00 AM – 6:00 PM",
       weekend: "Sunday: Closed",

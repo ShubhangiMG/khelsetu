@@ -290,12 +290,12 @@ export default function AboutPage() {
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={100}>
-            <div className="rounded-2xl overflow-hidden mx-auto mb-8 max-w-sm border-4 border-gold/20">
+            <div className="rounded-2xl overflow-hidden mx-auto mb-8 max-w-lg border-4 border-gold/20">
               <Image
                 src="/images/ourFounder.png"
                 alt={siteConfig.founder.name}
-                width={400}
-                height={500}
+                width={600}
+                height={750}
                 className="w-full h-auto object-cover"
               />
             </div>

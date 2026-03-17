@@ -6,7 +6,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import { siteConfig, projects as projectsData } from "@/lib/siteConfig";
 
 /* ──────────────────── WAVE DIVIDER SVG ──────────────────── */
-function WaveDivider({ color = "#FAF8F5", flip = false }: { color?: string; flip?: boolean }) {
+function WaveDivider({ color = "#f4d09a", flip = false }: { color?: string; flip?: boolean }) {
   return (
     <div className={`absolute left-0 w-full overflow-hidden leading-[0] ${flip ? "top-[-1px] rotate-180" : "bottom-[-1px]"}`}>
       <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[60px] md:h-[80px]">
@@ -54,48 +54,15 @@ function FloatingShapes() {
 function HeroSection() {
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      {/* Sliding background images — horizontal strip */}
+      {/* Background image */}
       <div className="absolute inset-0">
-        <div className="flex h-full w-[400%] animate-hero-slide">
-          <div className="relative w-1/4 h-full flex-shrink-0">
-            <Image
-              src="/images/launch.jpg"
-              alt="Khel Setu Foundation event"
-              fill
-              className="object-cover object-center"
-              priority
-            />
-          </div>
-          <div className="relative w-1/4 h-full flex-shrink-0">
-            <Image
-              src="/images/founder0.jpg"
-              alt={siteConfig.founder.name}
-              fill
-              className="object-cover"
-              style={{ objectPosition: '50% 15%' }}
-              priority
-            />
-          </div>
-          <div className="relative w-1/4 h-full flex-shrink-0">
-            <Image
-              src="/images/founder2.jpg"
-              alt="Khel Setu Foundation"
-              fill
-              className="object-cover object-center"
-              priority
-            />
-          </div>
-          {/* Duplicate of first image for seamless loop */}
-          <div className="relative w-1/4 h-full flex-shrink-0">
-            <Image
-              src="/images/launch.jpg"
-              alt="Khel Setu Foundation event"
-              fill
-              className="object-cover object-center"
-              priority
-            />
-          </div>
-        </div>
+        <Image
+          src="/images/launch1.jpg"
+          alt="Khel Setu Foundation event"
+          fill
+          className="object-cover object-center"
+          priority
+        />
       </div>
 
       {/* Dark overlay for text readability */}
@@ -109,22 +76,14 @@ function HeroSection() {
 
       {/* Content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-center">
-        {/* Small tag above heading */}
-        <div className="inline-flex items-center gap-2 glass px-5 py-2 rounded-full mb-8">
-          <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-          <span className="text-gold/90 text-sm font-medium tracking-wider uppercase">
-            Bridging Sports &amp; Opportunity
-          </span>
-        </div>
-
-        <h1 className="font-[var(--font-playfair)] italic text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1]">
-          <span className="text-white">Khel</span>{" "}
-          <span className="text-gradient">Setu</span>
+        <h1 className="font-[var(--font-playfair)] italic text-5xl md:text-6xl lg:text-3xl font-bold mb-8 leading-[1.1]">
+          <span className="text-white">Building a Stronger India - Mind, Body, and Society.</span>{" "}
+          {/* <span className="text-gradient">Setu</span> */}
         </h1>
 
         <p className="text-white/80 text-lg md:text-xl mb-4 leading-relaxed max-w-lg mx-auto font-[var(--font-playfair)] italic">
           हो गई है पीर पर्वत सी, पिघलनी चाहिए<br />
-          इस हिमालय से कोई गंगा निकलनी चाहिए।
+          इस हिमालय से कोई गंगा निकलनी चाहिए
         </p>
 
         <p className="text-gold italic font-semibold text-lg md:text-xl tracking-wide mb-10">
@@ -301,93 +260,19 @@ function AboutSnippet() {
 
           <ScrollReveal direction="right" delay={200}>
             <div className="relative">
-              <div className="placeholder-gradient rounded-2xl h-96 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 border-2 border-dashed border-gray-300/50 rounded-2xl m-4" />
-                <span className="text-gray-400 text-sm z-10">
-                  [Foundation team / sports event photo]
-                </span>
+              <div className="rounded-2xl h-66 relative overflow-hidden">
+                <Image
+                  src="/images/image.png"
+                  alt="Khel Setu Foundation team"
+                  fill
+                  className="object-cover"
+                />
               </div>
               {/* Decorative offset border */}
               <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-gold/20 rounded-2xl -z-10" />
             </div>
           </ScrollReveal>
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ──────────────────── OUR IMPACT PREVIEW ──────────────────── */
-function ImpactPreview() {
-  const impacts = [
-    {
-      title: "Lives Transformed Through Sport",
-      desc: "Athletes from underprivileged backgrounds gaining access to professional training and competitive platforms.",
-      icon: "🌟",
-    },
-    {
-      title: "Communities United",
-      desc: "Sports events bringing together people across ages, genders, and backgrounds to build stronger communities.",
-      icon: "🤝",
-    },
-    {
-      title: "Women Breaking Barriers",
-      desc: "Through Project Mukti, women are discovering confidence, leadership, and independence through sports.",
-      icon: "💪",
-    },
-  ];
-
-  return (
-    <section className="relative py-24 bg-cream overflow-hidden">
-      {/* Background shape */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-br from-gold/5 via-transparent to-navy/5 blur-3xl" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal direction="up">
-          <div className="text-center mb-16">
-            <span className="text-crimson font-semibold text-sm uppercase tracking-widest">
-              Making A Difference
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-navy mt-3 mb-4">
-              Our Impact
-            </h2>
-            <div className="w-20 h-1 bg-gold mx-auto mb-6" />
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              From grassroots fields to national stages — see how we are making a
-              difference across communities.
-            </p>
-          </div>
-        </ScrollReveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {impacts.map((item, i) => (
-            <ScrollReveal key={item.title} direction="up" delay={i * 150}>
-              <div className="card-hover bg-white rounded-2xl overflow-hidden group">
-                <div className="h-52 placeholder-gradient flex items-center justify-center relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent" />
-                  <span className="text-6xl relative z-10 group-hover:scale-110 transition-transform duration-300">{item.icon}</span>
-                </div>
-                <div className="p-8">
-                  <h3 className="text-xl font-bold text-navy mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-
-        <ScrollReveal direction="up" delay={300}>
-          <div className="text-center mt-14">
-            <Link
-              href="/impact"
-              className="btn-shine bg-navy text-white px-10 py-4 rounded-full font-semibold hover:bg-navy-light transition-all duration-300 hover:scale-105 inline-block"
-            >
-              See Our Full Impact
-            </Link>
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   );
@@ -433,7 +318,6 @@ export default function HomePage() {
       <ImpactNumbers />
       <ProjectsPreview />
       <AboutSnippet />
-      <ImpactPreview />
       <TestimonialsSection />
       <CTASection />
     </>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedCounter from "@/components/AnimatedCounter";
@@ -30,9 +31,9 @@ export default function ImpactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
-              { number: "500+", label: "Athletes Supported", icon: "🏅" },
+              { number: "500+", label: "Youth Supported", icon: "🏅" },
               { number: "20+", label: "Programs Run", icon: "📋" },
-              { number: "10+", label: "States Reached", icon: "🗺️" },
+              { number: "10+", label: "Districts Reached", icon: "🗺️" },
               { number: "50+", label: "Events Organized", icon: "🎯" },
             ].map((stat, i) => (
               <ScrollReveal key={stat.label} direction="up" delay={i * 150}>
@@ -65,15 +66,17 @@ export default function ImpactPage() {
           <div className="space-y-16">
             {/* Impact Area 1 */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="bg-cream rounded-2xl h-72 flex items-center justify-center">
-                {/* PLACEHOLDER: Replace with actual image */}
-                <span className="text-gray-400 text-sm">
-                  [Impact image placeholder]
-                </span>
+              <div className="rounded-2xl overflow-hidden h-72 relative">
+                <Image
+                  src="/images/endorphin/IMG-20250706-WA0005.jpg"
+                  alt="Youth development through sports"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-navy mb-4">
-                  Athlete Development
+                  Youth Development
                 </h3>
                 <div className="w-12 h-1 bg-crimson mb-4" />
                 <p className="text-gray-600 text-lg leading-relaxed mb-4">
@@ -101,11 +104,13 @@ export default function ImpactPage() {
 
             {/* Impact Area 2 */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="lg:order-2 bg-cream rounded-2xl h-72 flex items-center justify-center">
-                {/* PLACEHOLDER: Replace with actual image */}
-                <span className="text-gray-400 text-sm">
-                  [Impact image placeholder]
-                </span>
+              <div className="lg:order-2 rounded-2xl overflow-hidden h-72 relative">
+                <Image
+                  src="/images/mukti/DSC00334.JPG"
+                  alt="Women empowerment through Project Mukti"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="lg:order-1">
                 <h3 className="text-2xl font-bold text-navy mb-4">
@@ -137,11 +142,13 @@ export default function ImpactPage() {
 
             {/* Impact Area 3 */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="bg-cream rounded-2xl h-72 flex items-center justify-center">
-                {/* PLACEHOLDER: Replace with actual image */}
-                <span className="text-gray-400 text-sm">
-                  [Impact image placeholder]
-                </span>
+              <div className="rounded-2xl overflow-hidden h-72 relative">
+                <Image
+                  src="/images/gallery/IMG-20250626-WA0106.jpg"
+                  alt="Community building through sports events"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-navy mb-4">
@@ -189,19 +196,19 @@ export default function ImpactPage() {
               {
                 quote:
                   "Khel Setu gave me the chance to train properly and compete. I never thought I'd represent my district.",
-                name: "[Athlete Name]",
+                name: "Saurabh",
                 role: "Athlete, Project PlayFree",
               },
               {
                 quote:
                   "Through Project Mukti, I found confidence I didn't know I had. Sports changed how I see myself.",
-                name: "[Participant Name]",
+                name: "Payal",
                 role: "Participant, Project Mukti",
               },
               {
                 quote:
                   "The foundation's work in our village has united the community like nothing else could.",
-                name: "[Community Leader Name]",
+                name: "Om Prakash",
                 role: "Community Leader",
               },
             ].map((t) => (
