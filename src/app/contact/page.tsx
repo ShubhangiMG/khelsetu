@@ -12,6 +12,13 @@ export default function ContactPage() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
+    // Set reply-to and dynamic subject
+    const email = data.get("Email") as string;
+    const subject = data.get("Subject") as string;
+    const name = data.get("Name") as string;
+    data.set("_replyto", email);
+    data.set("_subject", `KhelSetu Contact: ${subject} — from ${name}`);
+
     try {
       const res = await fetch("https://formspree.io/f/mzdjkpnp", {
         method: "POST",
@@ -93,6 +100,7 @@ export default function ContactPage() {
               )}
 
               <form onSubmit={handleSubmit} className="space-y-6">
+                <input type="hidden" name="_subject" value="New KhelSetu Contact Form Submission" />
                 <div>
                   <label
                     htmlFor="name"
@@ -103,7 +111,7 @@ export default function ContactPage() {
                   <input
                     type="text"
                     id="name"
-                    name="name"
+                    name="Name"
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent outline-none transition"
                     placeholder="Enter your name"
@@ -119,11 +127,12 @@ export default function ContactPage() {
                   <input
                     type="email"
                     id="email"
-                    name="email"
+                    name="Email"
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent outline-none transition"
                     placeholder="your@email.com"
                   />
+                  <input type="hidden" name="_replyto" id="replyto" />
                 </div>
                 <div>
                   <label
@@ -134,7 +143,7 @@ export default function ContactPage() {
                   </label>
                   <select
                     id="subject"
-                    name="subject"
+                    name="Subject"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent outline-none transition"
                   >
                     <option value="general">General Inquiry</option>
@@ -153,7 +162,7 @@ export default function ContactPage() {
                   </label>
                   <textarea
                     id="message"
-                    name="message"
+                    name="Message"
                     rows={5}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent outline-none transition resize-none"
