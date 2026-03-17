@@ -319,9 +319,6 @@ function PartnersSection() {
     { src: "/images/logosPartner/logo3.png", alt: "Partner 3" },
     { src: "/images/logosPartner/logo4.png", alt: "Partner 4" },
   ];
-  // Duplicate for seamless loop
-  const allLogos = [...logos, ...logos];
-
   return (
     <section className="py-16 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -336,20 +333,20 @@ function PartnersSection() {
             <div className="w-16 h-1 bg-gold mx-auto mt-4" />
           </div>
         </ScrollReveal>
-        <div className="relative">
-          <div className="flex animate-partner-slide w-max gap-16 items-center">
-            {allLogos.map((logo, i) => (
-              <div key={i} className="flex-shrink-0 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300">
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={140}
-                  height={70}
-                  className="h-16 w-auto object-contain"
-                />
-              </div>
-            ))}
-          </div>
+      </div>
+      <div className="relative w-full">
+        <div className="flex animate-partner-slide items-center" style={{ width: 'max-content' }}>
+          {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
+            <div key={i} className="flex-shrink-0 px-8 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300">
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                width={140}
+                height={70}
+                className="h-16 w-auto object-contain"
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>
