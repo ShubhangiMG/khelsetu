@@ -32,38 +32,30 @@ function HeroSection() {
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-navy/75" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-        <p
-          className="font-[var(--font-playfair)] font-black text-5xl md:text-2xl tracking-wider mb-8 text-transparent bg-clip-text leading-tight"
-          style={{
-            // backgroundImage: "url('/images/tricolor.png')",
-            backgroundColor: "#FFFFFF",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            WebkitTextStroke: "1px rgba(197, 165, 90, 0.3)",
-          }}
-        >
-          #ChooseSportsNotDrugs
-        </p>
-        <h1 className="text-4xl md:text-6xl font-bold text-gold mb-6 leading-tight">
-          Bridging Sports & Opportunity
+        <h1 className="font-[var(--font-playfair)] italic text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          <span className="text-white">Bridging </span>
+          <span className="text-gold">Sports</span>
+          <span className="text-white"> & Opportunity</span>
         </h1>
-        <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10">
-          Empowering communities through sports, knowledge and awareness.
+        <p className="text-white text-lg md:text-xl mb-4 leading-relaxed">
+          हो गई है पीर पर्वत सी, पिघलनी चाहिए<br />
+          इस हिमालय से कोई गंगा निकलनी चाहिए।
+        </p>
+        <p className="text-gold italic font-semibold text-lg md:text-xl tracking-wide mb-10">
+          #ChooseSportsNotDrugs
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            href="/about"
+            href="/contact"
             className="bg-gold text-navy px-8 py-3 rounded-md font-bold text-lg hover:bg-gold-light transition-colors duration-200"
           >
-            Learn More
+            Get Involved
           </Link>
           <Link
-            href="/contact"
+            href="/projects"
             className="border-2 border-white text-white px-8 py-3 rounded-md font-bold text-lg hover:bg-white hover:text-navy transition-colors duration-200"
           >
-            Get Involved
+            Our Initiatives
           </Link>
         </div>
       </div>

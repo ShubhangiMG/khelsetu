@@ -1,12 +1,35 @@
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Contact Us — Khel Setu Foundation",
-  description:
-    "Get in touch with Khel Setu Foundation. Reach out to volunteer, partner, donate, or learn more about our programs.",
-};
+import { useState, type FormEvent } from "react";
 
 export default function ContactPage() {
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("sending");
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch("https://formspree.io/f/mzdjkpnp", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
     <>
       {/* Page Hero */}
@@ -32,17 +55,44 @@ export default function ContactPage() {
               <h2 className="text-2xl font-bold text-navy mb-6">
                 Send us a message
               </h2>
-              {/*
-                FORM NOTE: This form uses Formspree for handling submissions
-                without a backend. Replace "YOUR_FORMSPREE_ID" with your
-                actual Formspree form ID (create one free at formspree.io),
-                or swap with any other form handler (Netlify Forms, etc.)
-              */}
-              <form
-                action="https://formspree.io/f/YOUR_FORMSPREE_ID"
-                method="POST"
-                className="space-y-6"
-              >
+
+              {/* Success Banner */}
+              {status === "success" && (
+                <div className="mb-6 bg-green-50 border border-green-200 rounded-lg p-4 flex items-center gap-3">
+                  <span className="text-green-600 text-xl">✓</span>
+                  <div>
+                    <p className="text-green-800 font-semibold">Message sent successfully!</p>
+                    <p className="text-green-700 text-sm">Thank you for reaching out. We&apos;ll get back to you soon.</p>
+                  </div>
+                  <button
+                    onClick={() => setStatus("idle")}
+                    className="ml-auto text-green-600 hover:text-green-800"
+                    aria-label="Dismiss"
+                  >
+                    ✕
+                  </button>
+                </div>
+              )}
+
+              {/* Error Banner */}
+              {status === "error" && (
+                <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4 flex items-center gap-3">
+                  <span className="text-red-600 text-xl">!</span>
+                  <div>
+                    <p className="text-red-800 font-semibold">Something went wrong.</p>
+                    <p className="text-red-700 text-sm">Please try again or email us directly.</p>
+                  </div>
+                  <button
+                    onClick={() => setStatus("idle")}
+                    className="ml-auto text-red-600 hover:text-red-800"
+                    aria-label="Dismiss"
+                  >
+                    ✕
+                  </button>
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label
                     htmlFor="name"
@@ -112,9 +162,10 @@ export default function ContactPage() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-navy text-white py-3 rounded-lg font-bold text-lg hover:bg-navy-light transition-colors duration-200"
+                  disabled={status === "sending"}
+                  className="w-full bg-navy text-white py-3 rounded-lg font-bold text-lg hover:bg-navy-light transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {status === "sending" ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>
@@ -133,11 +184,11 @@ export default function ContactPage() {
                     <h3 className="font-bold text-navy">Office Address</h3>
                     <p className="text-gray-600 mt-1">
                       {/* PLACEHOLDER: Replace with actual address */}
-                      [Address Line 1]
+                      Plot No. 20, Ganga sagar Vistar,
                       <br />
-                      [Address Line 2]
+                      Jagdamba Colony, Agra Road,
                       <br />
-                      [City, State, PIN]
+                      Jaipur, Rajathan - 302031
                     </p>
                   </div>
                 </div>
@@ -149,7 +200,7 @@ export default function ContactPage() {
                     <h3 className="font-bold text-navy">Phone</h3>
                     <p className="text-gray-600 mt-1">
                       {/* PLACEHOLDER: Replace with actual phone */}
-                      8094939595
+                      +91 8094939595
                     </p>
                   </div>
                 </div>

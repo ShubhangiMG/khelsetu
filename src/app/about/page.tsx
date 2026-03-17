@@ -140,19 +140,17 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Our Team
+              Our Founder
             </h2>
             <div className="w-20 h-1 bg-gold mx-auto mb-6" />
             <p className="text-gray-300 text-lg">
-              The people behind the mission.
+              The visionary behind our mission.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* PLACEHOLDER: Replace with actual team members */}
             {[
-              { name: "[Team Member 1]", role: "[Designation]" },
-              { name: "[Team Member 2]", role: "[Designation]" },
-              { name: "[Team Member 3]", role: "[Designation]" },
+              { name: "Abhishek Gupta", role: "Founder" },
             ].map((member) => (
               <div
                 key={member.name}
