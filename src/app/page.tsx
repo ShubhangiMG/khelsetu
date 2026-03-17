@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import { siteConfig, projects as projectsData } from "@/lib/siteConfig";
 
 /* ──────────────────── WAVE DIVIDER SVG ──────────────────── */
 function WaveDivider({ color = "#FAF8F5", flip = false }: { color?: string; flip?: boolean }) {
@@ -50,43 +52,63 @@ function FloatingShapes() {
 
 /* ──────────────────── HERO SECTION ──────────────────── */
 function HeroSection() {
-  const heroImages = ["/images/founder.jpg", "/images/founder2.jpg", "/images/launch.jpg"];
-
   return (
-    <section className="relative bg-navy min-h-[100vh] flex items-center overflow-hidden">
-      {/* Sliding background images */}
-      <div
-        className="absolute inset-0 flex animate-slide"
-        style={{ width: `${heroImages.length * 50}%` }}
-      >
-        {[...heroImages, ...heroImages].map((src, i) => (
-          <div
-            key={i}
-            className="relative shrink-0"
-            style={{ width: `${100 / heroImages.length}%` }}
-          >
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      {/* Sliding background images — horizontal strip */}
+      <div className="absolute inset-0">
+        <div className="flex h-full w-[400%] animate-hero-slide">
+          <div className="relative w-1/4 h-full flex-shrink-0">
             <Image
-              src={src}
-              alt=""
+              src="/images/launch.jpg"
+              alt="Khel Setu Foundation event"
               fill
-              className="object-cover"
-              priority={i < heroImages.length}
+              className="object-cover object-center"
+              priority
             />
           </div>
-        ))}
+          <div className="relative w-1/4 h-full flex-shrink-0">
+            <Image
+              src="/images/founder0.jpg"
+              alt={siteConfig.founder.name}
+              fill
+              className="object-cover"
+              style={{ objectPosition: '50% 15%' }}
+              priority
+            />
+          </div>
+          <div className="relative w-1/4 h-full flex-shrink-0">
+            <Image
+              src="/images/founder2.jpg"
+              alt="Khel Setu Foundation"
+              fill
+              className="object-cover object-center"
+              priority
+            />
+          </div>
+          {/* Duplicate of first image for seamless loop */}
+          <div className="relative w-1/4 h-full flex-shrink-0">
+            <Image
+              src="/images/launch.jpg"
+              alt="Khel Setu Foundation event"
+              fill
+              className="object-cover object-center"
+              priority
+            />
+          </div>
+        </div>
       </div>
 
-      {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy/90" />
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-navy/60" />
 
       {/* Gradient mesh overlay for depth */}
-      <div className="absolute inset-0 gradient-mesh" />
+      <div className="absolute inset-0 gradient-mesh opacity-50" />
 
       {/* Floating decorative elements */}
       <FloatingShapes />
 
       {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-center">
         {/* Small tag above heading */}
         <div className="inline-flex items-center gap-2 glass px-5 py-2 rounded-full mb-8">
           <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
@@ -95,17 +117,17 @@ function HeroSection() {
           </span>
         </div>
 
-        <h1 className="font-[var(--font-playfair)] italic text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1]">
+        <h1 className="font-[var(--font-playfair)] italic text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1]">
           <span className="text-white">Khel</span>{" "}
           <span className="text-gradient">Setu</span>
         </h1>
 
-        <p className="text-white/80 text-lg md:text-xl mb-4 leading-relaxed max-w-2xl mx-auto font-[var(--font-playfair)] italic">
+        <p className="text-white/80 text-lg md:text-xl mb-4 leading-relaxed max-w-lg mx-auto font-[var(--font-playfair)] italic">
           हो गई है पीर पर्वत सी, पिघलनी चाहिए<br />
           इस हिमालय से कोई गंगा निकलनी चाहिए।
         </p>
 
-        <p className="text-gold italic font-semibold text-lg md:text-xl tracking-wide mb-12">
+        <p className="text-gold italic font-semibold text-lg md:text-xl tracking-wide mb-10">
           #ChooseSportsNotDrugs
         </p>
 
@@ -134,10 +156,10 @@ function HeroSection() {
 /* ──────────────────── IMPACT NUMBERS ──────────────────── */
 function ImpactNumbers() {
   const stats = [
-    { number: "500+", label: "Athletes Supported", icon: "🏅" },
-    { number: "20+", label: "Programs", icon: "📋" },
-    { number: "10+", label: "States Reached", icon: "🗺️" },
-    { number: "50+", label: "Community Events", icon: "🎯" },
+    { number: siteConfig.stats.campaigns, label: "Awareness Campaigns", icon: "📢" },
+    { number: siteConfig.stats.projects, label: "Active Projects", icon: "🎯" },
+    { number: siteConfig.stats.events, label: "Community Events", icon: "🤝" },
+    { number: siteConfig.stats.livesTouched, label: "Lives Touched", icon: "❤️" },
   ];
 
   return (
@@ -169,49 +191,6 @@ function ImpactNumbers() {
 
 /* ──────────────────── OUR PROJECTS ──────────────────── */
 function ProjectsPreview() {
-  const projects = [
-    {
-      icon: "⚽",
-      title: "Project PlayFree",
-      subtitle: "Sports Recognition",
-      desc: "Giving recognition and platforms to grassroots athletes who deserve to be seen, celebrated, and supported in their sporting journey.",
-      href: "/projects#playfree",
-      accent: "from-gold/10 to-transparent",
-    },
-    {
-      icon: "🏃",
-      title: "Project Endorphin",
-      subtitle: "Fitness & Wellbeing",
-      desc: "Promoting fitness, mental health, and overall wellbeing through structured sports activities and community wellness programs.",
-      href: "/projects#endorphin",
-      accent: "from-crimson/10 to-transparent",
-    },
-    {
-      icon: "💪",
-      title: "Project Mukti",
-      subtitle: "Women Empowerment",
-      desc: "Empowering women through sports — breaking barriers, building confidence, and creating pathways to independence and self-reliance.",
-      href: "/projects#mukti",
-      accent: "from-navy/10 to-transparent",
-    },
-    {
-      icon: "🔄",
-      title: "Project Second Innings",
-      subtitle: "Sports Beyond Retirement",
-      desc: "Helping retired and senior athletes find purpose, stay active, and contribute to sports development through coaching and mentorship.",
-      href: "/projects#second-innings",
-      accent: "from-gold/10 to-transparent",
-    },
-    {
-      icon: "📚",
-      title: "Project BookRise",
-      subtitle: "Education Through Sports",
-      desc: "Bridging education and athletics — ensuring young athletes have access to learning resources and academic support alongside their training.",
-      href: "/projects#bookrise",
-      accent: "from-crimson/10 to-transparent",
-    },
-  ];
-
   return (
     <section className="relative py-24 bg-white overflow-hidden">
       {/* Background decoration */}
@@ -236,8 +215,8 @@ function ProjectsPreview() {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {projects.map((project, i) => (
-            <ScrollReveal key={project.title} direction="up" delay={i * 100}>
+          {projectsData.map((project, i) => (
+            <ScrollReveal key={project.fullName} direction="up" delay={i * 100}>
               <Link
                 href={project.href}
                 className={`card-hover relative bg-white rounded-2xl p-10 border border-gray-100 block overflow-hidden group`}
@@ -248,7 +227,7 @@ function ProjectsPreview() {
                 <div className="relative">
                   <div className="text-5xl mb-5 group-hover:scale-110 transition-transform duration-300">{project.icon}</div>
                   <h3 className="text-2xl font-bold text-navy mb-1">
-                    {project.title}
+                    {project.fullName}
                   </h3>
                   <p className="text-gold font-semibold text-sm uppercase tracking-wider mb-4">
                     {project.subtitle}
@@ -299,17 +278,17 @@ function AboutSnippet() {
               </h2>
               <div className="w-20 h-1 bg-crimson mb-8" />
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                &ldquo;Khel Setu&rdquo; means &ldquo;Bridge of Sports.&rdquo; We
-                believe that sports have the power to transform lives, bridge
-                divides, and create pathways to a brighter future. Our foundation
-                works tirelessly to bring sporting opportunities to every corner of
-                India.
+                Born from a powerful experiment — introducing sports in rehabilitation centres — {siteConfig.name} is the realization that sports can heal what society struggles to fix. Founded by {siteConfig.founder.name}, a psychology student who conducted {siteConfig.stats.campaigns} mental health campaigns.
               </p>
-              <p className="text-gray-300 text-lg leading-relaxed mb-10">
-                From grassroots football programs to athlete scholarships, we are
-                building a movement that puts sports at the heart of community
-                development and youth empowerment.
+              <p className="text-gray-300 text-lg leading-relaxed mb-4">
+                What started as the #ChooseSportsNotDrugs campaign has grown into a movement with six projects — building drug-free youth, stronger minds, empowered women, and dignified lives through the bridge of sports.
               </p>
+              <div className="bg-white/5 border border-white/10 rounded-xl p-5 mb-10">
+                <p className="text-gold font-semibold text-xs uppercase tracking-widest mb-2">Our Mission</p>
+                <p className="text-gray-200 text-base leading-relaxed italic">
+                  &ldquo;{siteConfig.mission}&rdquo;
+                </p>
+              </div>
               <Link
                 href="/about"
                 className="btn-shine inline-flex items-center gap-3 bg-gold/10 border border-gold/30 text-gold px-8 py-3 rounded-full font-semibold hover:bg-gold/20 transition-all duration-300 group"
@@ -455,6 +434,7 @@ export default function HomePage() {
       <ProjectsPreview />
       <AboutSnippet />
       <ImpactPreview />
+      <TestimonialsSection />
       <CTASection />
     </>
   );

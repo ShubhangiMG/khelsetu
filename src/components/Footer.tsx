@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { siteConfig } from "@/lib/siteConfig";
 
 export default function Footer() {
   return (
@@ -12,11 +13,10 @@ export default function Footer() {
           {/* About Column */}
           <div>
             <h3 className="text-gradient text-xl font-bold mb-4 inline-block">
-              Khel Setu Foundation
+              {siteConfig.name}
             </h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              Bridging the gap between talent and opportunity through sports.
-              Empowering communities, nurturing athletes, building futures.
+              {siteConfig.missionShort}
             </p>
           </div>
 
@@ -51,16 +51,19 @@ export default function Footer() {
             <h3 className="text-gold text-lg font-bold mb-4">Contact</h3>
             <div className="space-y-3 text-sm text-gray-300">
               <p>
-                {/* PLACEHOLDER: Replace with actual address */}
-                📍 [Address placeholder]
+                📍 {siteConfig.contact.address.line1}, {siteConfig.contact.address.line2}, {siteConfig.contact.address.city}, {siteConfig.contact.address.state} - {siteConfig.contact.address.pin}
               </p>
               <p>
-                {/* PLACEHOLDER: Replace with actual phone */}
-                📞 [Phone placeholder]
+                📞{" "}
+                <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-gold transition-colors">
+                  {siteConfig.contact.phone}
+                </a>
               </p>
               <p>
-                {/* PLACEHOLDER: Replace with actual email */}
-                ✉️ [Email placeholder]
+                ✉️{" "}
+                <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-gold transition-colors">
+                  {siteConfig.contact.email}
+                </a>
               </p>
             </div>
           </div>
@@ -69,12 +72,11 @@ export default function Footer() {
           <div>
             <h3 className="text-gold text-lg font-bold mb-4">Follow Us</h3>
             <div className="flex gap-4">
-              {/* PLACEHOLDER: Replace # with actual social media URLs */}
               {[
-                { label: "Facebook", href: "#", icon: "fb" },
-                { label: "Instagram", href: "#", icon: "ig" },
-                { label: "Twitter", href: "#", icon: "tw" },
-                { label: "YouTube", href: "#", icon: "yt" },
+                { label: "Facebook", href: siteConfig.social.facebook, icon: "fb" },
+                { label: "Instagram", href: siteConfig.social.instagram, icon: "ig" },
+                { label: "Twitter", href: siteConfig.social.twitter, icon: "tw" },
+                { label: "YouTube", href: siteConfig.social.youtube, icon: "yt" },
               ].map((social) => (
                 <a
                   key={social.icon}
@@ -94,7 +96,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-navy-light mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm">
-            &copy; {new Date().getFullYear()} Khel Setu Foundation. All rights
+            &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
             reserved.
           </p>
           <div className="flex gap-6">

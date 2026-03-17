@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { siteConfig } from "@/lib/siteConfig";
 
 export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -20,7 +21,7 @@ export default function ContactPage() {
     data.set("_subject", `KhelSetu Contact: ${subject} — from ${name}`);
 
     try {
-      const res = await fetch("https://formspree.io/f/mzdjkpnp", {
+      const res = await fetch(siteConfig.formspree, {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
@@ -40,7 +41,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Page Hero */}
-      <section className="bg-navy pt-32 pb-20">
+      <section className="bg-navy py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Contact <span className="text-gold">Us</span>
@@ -192,12 +193,11 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-bold text-navy">Office Address</h3>
                     <p className="text-gray-600 mt-1">
-                      {/* PLACEHOLDER: Replace with actual address */}
-                      Plot No. 20, Ganga sagar Vistar,
+                      {siteConfig.contact.address.line1}
                       <br />
-                      Jagdamba Colony, Agra Road,
+                      {siteConfig.contact.address.line2}
                       <br />
-                      Jaipur, Rajathan - 302031
+                      {siteConfig.contact.address.city}, {siteConfig.contact.address.state} - {siteConfig.contact.address.pin}
                     </p>
                   </div>
                 </div>
@@ -208,8 +208,9 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-bold text-navy">Phone</h3>
                     <p className="text-gray-600 mt-1">
-                      {/* PLACEHOLDER: Replace with actual phone */}
-                      +91 8094939595
+                      <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-gold transition-colors">
+                        {siteConfig.contact.phone}
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -220,8 +221,9 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-bold text-navy">Email</h3>
                     <p className="text-gray-600 mt-1">
-                      {/* PLACEHOLDER: Replace with actual email */}
-                      khelsetu.org@gmail.com
+                      <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-gold transition-colors">
+                        {siteConfig.contact.email}
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -232,21 +234,26 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-bold text-navy">Working Hours</h3>
                     <p className="text-gray-600 mt-1">
-                      {/* PLACEHOLDER */}
-                      Monday – Saturday: 10:00 AM – 6:00 PM
+                      {siteConfig.contact.hours.weekdays}
                       <br />
-                      Sunday: Closed
+                      {siteConfig.contact.hours.weekend}
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Map placeholder */}
-              <div className="mt-8 bg-gray-200 rounded-xl h-64 flex items-center justify-center">
-                {/* PLACEHOLDER: Replace with Google Maps embed */}
-                <span className="text-gray-400 text-sm">
-                  [Google Maps embed placeholder]
-                </span>
+              {/* Google Maps */}
+              <div className="mt-8 rounded-xl overflow-hidden h-64">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3557.097!2d75.833!3d26.912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDU0JzQzLjIiTiA3NcKwNDknNTguOCJF!5e0!3m2!1sen!2sin!4v1"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Khel Setu Foundation Office Location"
+                />
               </div>
             </div>
           </div>

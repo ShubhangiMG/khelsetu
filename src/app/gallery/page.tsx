@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
+import { getProjectImages, getGalleryImages } from "@/lib/getImages";
+import { siteConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
   title: "Gallery — Khel Setu Foundation",
@@ -7,55 +10,22 @@ export const metadata: Metadata = {
     "Photos and moments from Khel Setu Foundation's programs, events, and community impact.",
 };
 
-// PLACEHOLDER: Replace with actual gallery categories and images
+/* Build-time: scan all image folders automatically */
 const galleryCategories = [
-  {
-    title: "Project Mukti",
-    description: "Women empowerment through sports",
-    images: [
-      { alt: "Mukti event 1", placeholder: true },
-      { alt: "Mukti event 2", placeholder: true },
-      { alt: "Mukti event 3", placeholder: true },
-      { alt: "Mukti event 4", placeholder: true },
-    ],
-  },
-  {
-    title: "Project PlayFree",
-    description: "Sports recognition and grassroots tournaments",
-    images: [
-      { alt: "PlayFree event 1", placeholder: true },
-      { alt: "PlayFree event 2", placeholder: true },
-      { alt: "PlayFree event 3", placeholder: true },
-      { alt: "PlayFree event 4", placeholder: true },
-    ],
-  },
-  {
-    title: "Community Events",
-    description: "Tournaments, sports days, and celebrations",
-    images: [
-      { alt: "Community event 1", placeholder: true },
-      { alt: "Community event 2", placeholder: true },
-      { alt: "Community event 3", placeholder: true },
-      { alt: "Community event 4", placeholder: true },
-    ],
-  },
-  {
-    title: "Training & Coaching",
-    description: "Behind the scenes of athlete development",
-    images: [
-      { alt: "Training 1", placeholder: true },
-      { alt: "Training 2", placeholder: true },
-      { alt: "Training 3", placeholder: true },
-      { alt: "Training 4", placeholder: true },
-    ],
-  },
-];
+  { title: "PlayFree", description: "Sports Against Drugs", folder: "playfree", images: getProjectImages("playfree") },
+  { title: "Endorphin", description: "Mental Wellness Movement", folder: "endorphin", images: getProjectImages("endorphin") },
+  { title: "Life Ready", description: "Life Skills for Youth", folder: "lifeready", images: getProjectImages("lifeready") },
+  { title: "ReadRise", description: "Reading & Library Development", folder: "readrise", images: getProjectImages("readrise") },
+  { title: "Mukti", description: "Women Empowerment", folder: "mukti", images: getProjectImages("mukti") },
+  { title: "Second Innings", description: "Elderly Welfare", folder: "second-innings", images: getProjectImages("second-innings") },
+  { title: "Community Moments", description: "Events, gatherings, and celebrations", folder: "gallery", images: getGalleryImages() },
+].filter((c) => c.images.length > 0);
 
 export default function GalleryPage() {
   return (
     <>
       {/* Page Hero */}
-      <section className="bg-navy pt-32 pb-20">
+      <section className="bg-navy py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Our <span className="text-gold">Gallery</span>
@@ -67,10 +37,10 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Gallery Sections */}
+      {/* Gallery Sections — auto-populated from image folders */}
       {galleryCategories.map((category, catIndex) => (
         <section
-          key={category.title}
+          key={category.folder}
           className={`py-20 ${catIndex % 2 === 0 ? "bg-white" : "bg-cream"}`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,14 +55,17 @@ export default function GalleryPage() {
                 <div className="w-12 h-1 bg-gold mt-3" />
               </div>
             </ScrollReveal>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {category.images.map((image, i) => (
-                <ScrollReveal key={i} direction="up" delay={i * 80}>
-                  <div className="aspect-square placeholder-gradient rounded-2xl flex items-center justify-center cursor-pointer group overflow-hidden relative">
-                    <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/30 transition-colors duration-300 rounded-2xl" />
-                    <span className="text-gray-400 text-xs text-center px-2 group-hover:text-white/80 transition-colors duration-300 relative z-10">
-                      {image.alt}
-                    </span>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {category.images.map((src, i) => (
+                <ScrollReveal key={src} direction="up" delay={i * 80}>
+                  <div className="aspect-square rounded-2xl overflow-hidden relative group cursor-pointer">
+                    <Image
+                      src={src}
+                      alt={`${category.title} photo ${i + 1}`}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/20 transition-colors duration-300" />
                   </div>
                 </ScrollReveal>
               ))}
@@ -111,14 +84,17 @@ export default function GalleryPage() {
             Follow us on social media for the latest updates.
           </p>
           <div className="flex justify-center gap-4 mt-6">
-            {/* PLACEHOLDER: Replace # with actual social URLs */}
-            {["Facebook", "Instagram", "Twitter"].map((platform) => (
+            {[
+              { name: "Facebook", url: siteConfig.social.facebook },
+              { name: "Instagram", url: siteConfig.social.instagram },
+              { name: "Twitter", url: siteConfig.social.twitter },
+            ].map((s) => (
               <a
-                key={platform}
-                href="#"
+                key={s.name}
+                href={s.url}
                 className="text-white hover:text-gold transition-colors text-sm font-medium"
               >
-                {platform}
+                {s.name}
               </a>
             ))}
           </div>

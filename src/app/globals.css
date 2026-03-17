@@ -66,6 +66,24 @@ body {
   to { stroke-dashoffset: 0; }
 }
 
+@keyframes progress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+/* Hero sliding background — 3 images + clone, seamless horizontal loop */
+@keyframes hero-slide {
+  0%      { transform: translateX(0); }
+  27%     { transform: translateX(0); }
+  33%     { transform: translateX(-25%); }
+  60%     { transform: translateX(-25%); }
+  66%     { transform: translateX(-50%); }
+  93%     { transform: translateX(-50%); }
+  100%    { transform: translateX(-75%); }
+}
+
+.animate-hero-slide { animation: hero-slide 21s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
