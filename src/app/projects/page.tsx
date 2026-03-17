@@ -39,23 +39,25 @@ function ProjectImageGrid({ folder, icon, name }: { folder: string; icon: string
 
   return (
     <div className="lg:sticky lg:top-36 space-y-4">
-      <div className="rounded-2xl overflow-hidden h-72 relative">
+      <div className="rounded-2xl overflow-hidden">
         <Image
           src={main}
           alt={`${name} project`}
-          fill
-          className="object-cover hover:scale-105 transition-transform duration-700"
+          width={800}
+          height={600}
+          className="w-full h-auto hover:scale-105 transition-transform duration-700"
         />
       </div>
       {rest.length > 0 && (
         <div className="grid grid-cols-2 gap-4">
           {rest.slice(0, 6).map((src, i) => (
-            <div key={src} className="rounded-xl overflow-hidden h-36 relative">
+            <div key={src} className="rounded-xl overflow-hidden">
               <Image
                 src={src}
                 alt={`${name} photo ${i + 2}`}
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-500"
+                width={400}
+                height={300}
+                className="w-full h-auto hover:scale-105 transition-transform duration-500"
               />
             </div>
           ))}

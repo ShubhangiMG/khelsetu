@@ -10,15 +10,15 @@ export const metadata: Metadata = {
 
 const advisors = [
   {
-    name: "Ridhhi Chandrawat",
-    title: "Advocate",
+    name: "Adv. Ridhhi Chandrawat",
+    title: "Secretary",
     organization: "Abhyutthanam Society",
     bio: "A legal professional and social activist providing strategic guidance on rights-based approaches to help the foundation maximize its impact across communities.",
     photo: "/images/advisors/advisor3.jpg",
   },
   {
-    name: "Pranjal Singh",
-    title: "Advocate & RTE Activist",
+    name: "Adv. Pranjal Singh",
+    title: "President",
     organization: "Abhyutthanam Society",
     bio: "An advocate and Right to Education activist bringing legal expertise and grassroots advocacy experience to strengthen the foundation's education and empowerment initiatives.",
     photo: "/images/advisors/advisor5.jpg",
