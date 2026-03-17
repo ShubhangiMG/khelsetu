@@ -13,19 +13,46 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      {/* Page Hero */}
-      <section className="bg-navy py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            About <span className="text-gold">Us</span>
-          </h1>
-          <div className="w-20 h-1 bg-crimson mx-auto mb-6" />
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            It did not begin with a grand vision. It began with a question.
-          </p>
-          <p className="font-[var(--font-playfair)] italic text-2xl md:text-3xl text-gold mt-6 max-w-2xl mx-auto leading-snug">
-            &ldquo;What if sports could heal what society struggles to fix?&rdquo;
-          </p>
+
+      {/* Founder Section */}
+      <section className="py-24 bg-navy relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-gold/5 to-transparent blur-3xl" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <ScrollReveal direction="up">
+            <span className="text-gold font-semibold text-sm uppercase tracking-widest">Our Founder</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 mb-4">{siteConfig.founder.name}</h2>
+            <div className="w-20 h-1 bg-gold mx-auto mb-8" />
+          </ScrollReveal>
+
+          <ScrollReveal direction="up" delay={100}>
+            <div className="rounded-2xl overflow-hidden mx-auto mb-8 max-w-lg border-4 border-gold/20">
+              <Image
+                src="/images/ourFounder.png"
+                alt={siteConfig.founder.name}
+                width={600}
+                height={750}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal direction="up" delay={200}>
+            <p className="text-gray-300 text-lg leading-relaxed mb-6">
+              A student of psychology with a zeal for solving real problems of society, Abhishek&apos;s journey is not just about starting an organization — it is about <strong className="text-white">turning empathy into action.</strong>
+            </p>
+            <p className="text-gray-300 text-lg leading-relaxed mb-8">
+              His passion for social impact and his belief in community strength continue to inspire a growing movement.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal direction="up" delay={300}>
+            <blockquote className="border-l-4 border-gold pl-6 text-left inline-block">
+              <p className="font-[var(--font-playfair)] italic text-xl md:text-2xl text-white leading-snug">
+                &ldquo;Khel Setu is not just a foundation.<br />
+                It is a belief — that when given the right direction, every life can rise again.&rdquo;
+              </p>
+            </blockquote>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -209,14 +236,15 @@ export default function AboutPage() {
 
           <ScrollReveal direction="up" delay={400}>
             <p className="text-center text-gray-600 text-lg mt-12 max-w-2xl mx-auto">
-              He realized that real change cannot come from one solution — <strong className="text-navy">it needs a system.</strong>
+              He realized that real change cannot come from one solution — it needs a system
             </p>
+            <p className="text-center text-navy text-lg mt-4 max-w-2xl mx-auto">and so, <strong className="text-navy">Khel Setu Was Born.</strong></p>
           </ScrollReveal>
         </div>
       </section>
 
       {/* The Bridge */}
-      <section className="py-24 bg-navy relative overflow-hidden">
+      {/* <section className="py-24 bg-navy relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-gold/5 to-transparent blur-3xl" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal direction="up">
@@ -249,7 +277,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* What Khel Setu Builds */}
       <section className="py-24 bg-white relative overflow-hidden">
@@ -276,48 +304,6 @@ export default function AboutPage() {
               </ScrollReveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Founder Section */}
-      <section className="py-24 bg-navy relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-gold/5 to-transparent blur-3xl" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <ScrollReveal direction="up">
-            <span className="text-gold font-semibold text-sm uppercase tracking-widest">Our Founder</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 mb-4">{siteConfig.founder.name}</h2>
-            <div className="w-20 h-1 bg-gold mx-auto mb-8" />
-          </ScrollReveal>
-
-          <ScrollReveal direction="up" delay={100}>
-            <div className="rounded-2xl overflow-hidden mx-auto mb-8 max-w-lg border-4 border-gold/20">
-              <Image
-                src="/images/ourFounder.png"
-                alt={siteConfig.founder.name}
-                width={600}
-                height={750}
-                className="w-full h-auto object-cover"
-              />
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal direction="up" delay={200}>
-            <p className="text-gray-300 text-lg leading-relaxed mb-6">
-              A student of psychology with a zeal for solving real problems of society, Abhishek&apos;s journey is not just about starting an organization — it is about <strong className="text-white">turning empathy into action.</strong>
-            </p>
-            <p className="text-gray-300 text-lg leading-relaxed mb-8">
-              His passion for social impact and his belief in community strength continue to inspire a growing movement.
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal direction="up" delay={300}>
-            <blockquote className="border-l-4 border-gold pl-6 text-left inline-block">
-              <p className="font-[var(--font-playfair)] italic text-xl md:text-2xl text-white leading-snug">
-                &ldquo;Khel Setu is not just a foundation.<br />
-                It is a belief — that when given the right direction, every life can rise again.&rdquo;
-              </p>
-            </blockquote>
-          </ScrollReveal>
         </div>
       </section>
 

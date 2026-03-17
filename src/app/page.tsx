@@ -57,7 +57,7 @@ function HeroSection() {
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/launch1.jpg"
+          src="/images/readrise/IMG-20250318-WA0016.jpg"
           alt="Khel Setu Foundation event"
           fill
           className="object-cover object-center"
@@ -76,9 +76,9 @@ function HeroSection() {
 
       {/* Content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-center">
-        <h1 className="font-[var(--font-playfair)] italic text-5xl md:text-6xl lg:text-3xl font-bold mb-8 leading-[1.1]">
-          <span className="text-white">Building a Stronger India - Mind, Body, and Society.</span>{" "}
-          {/* <span className="text-gradient">Setu</span> */}
+        <h1 className="font-[var(--font-playfair)] italic text-6xl md:text-7xl lg:text-4xl font-bold mb-8 leading-[1.1]">
+          <span className="text-gradient">Building a Stronger India - </span>{" "}
+          <span className="text-white">Mind, Body, and Society.</span>
         </h1>
 
         <p className="text-white/80 text-lg md:text-xl mb-4 leading-relaxed max-w-lg mx-auto font-[var(--font-playfair)] italic">
@@ -318,7 +318,6 @@ export default function HomePage() {
       <ImpactNumbers />
       <ProjectsPreview />
       <AboutSnippet />
-      <TestimonialsSection />
       <CTASection />
     </>
   );
