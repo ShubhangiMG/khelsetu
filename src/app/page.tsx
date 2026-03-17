@@ -318,9 +318,10 @@ function PartnersSection() {
     { src: "/images/logosPartner/logo2.png", alt: "Partner 2" },
     { src: "/images/logosPartner/logo3.png", alt: "Partner 3" },
     { src: "/images/logosPartner/logo4.png", alt: "Partner 4" },
+    { src: "/images/logosPartner/logo5.png", alt: "Partner 5" },
   ];
   return (
-    <section className="py-16 bg-white overflow-hidden">
+    <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal direction="up">
           <div className="text-center mb-10">
@@ -333,11 +334,9 @@ function PartnersSection() {
             <div className="w-16 h-1 bg-gold mx-auto mt-4" />
           </div>
         </ScrollReveal>
-      </div>
-      <div className="relative w-full">
-        <div className="flex animate-partner-slide items-center" style={{ width: 'max-content' }}>
-          {[...logos, ...logos, ...logos, ...logos].map((logo, i) => (
-            <div key={i} className="flex-shrink-0 px-8 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300">
+        <div className="flex flex-wrap justify-center items-center gap-12">
+          {logos.map((logo, i) => (
+            <div key={i} className="hover:scale-110 transition-transform duration-300">
               <Image
                 src={logo.src}
                 alt={logo.alt}
