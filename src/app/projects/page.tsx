@@ -82,9 +82,9 @@ export default function ProjectsPage() {
       </section>
 
       {/* Quick Nav */}
-      <section className="sticky top-[60px] z-30 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+      <section className="sticky top-[75px] z-30 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center gap-2 overflow-x-auto py-3 scrollbar-hide">
+          <div className="flex lg:justify-center gap-2 overflow-x-auto py-3 scrollbar-hide">
             {projectsData.map((p) => (
               <a
                 key={p.id}
@@ -160,10 +160,10 @@ export default function ProjectsPage() {
       <section id="endorphin" className="scroll-mt-28 py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <ScrollReveal direction="left">
+            <ScrollReveal direction="left" className="order-2 lg:order-1">
               <ProjectImageGrid folder="endorphin" icon="🏃" name="Endorphin" />
             </ScrollReveal>
-            <ScrollReveal direction="right" delay={200}>
+            <ScrollReveal direction="right" delay={200} className="order-1 lg:order-2">
               <div>
                 <span className="text-crimson font-bold text-sm uppercase tracking-wider">
                   Project
@@ -268,10 +268,10 @@ export default function ProjectsPage() {
       <section id="readrise" className="scroll-mt-28 py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <ScrollReveal direction="left">
+            <ScrollReveal direction="left" className="order-2 lg:order-1">
               <ProjectImageGrid folder="readrise" icon="📚" name="ReadRise" />
             </ScrollReveal>
-            <ScrollReveal direction="right" delay={200}>
+            <ScrollReveal direction="right" delay={200} className="order-1 lg:order-2">
               <div>
                 <span className="text-crimson font-bold text-sm uppercase tracking-wider">
                   Project
@@ -376,10 +376,10 @@ export default function ProjectsPage() {
       <section id="second-innings" className="scroll-mt-28 py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <ScrollReveal direction="left">
+            <ScrollReveal direction="left" className="order-2 lg:order-1">
               <ProjectImageGrid folder="second-innings" icon="🔄" name="Second Innings" />
             </ScrollReveal>
-            <ScrollReveal direction="right" delay={200}>
+            <ScrollReveal direction="right" delay={200} className="order-1 lg:order-2">
               <div>
                 <span className="text-crimson font-bold text-sm uppercase tracking-wider">
                   Project

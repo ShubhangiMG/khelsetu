@@ -76,7 +76,7 @@ function HeroSection() {
 
       {/* Content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-center">
-        <h1 className="font-[var(--font-playfair)] italic text-6xl md:text-7xl lg:text-4xl font-bold mb-8 leading-[1.1]">
+        <h1 className="font-[var(--font-playfair)] italic text-3xl md:text-7xl lg:text-4xl font-bold mb-8 leading-[1.1]">
           <span className="text-gradient">Building a Stronger India - </span>{" "}
           <span className="text-white">Mind, Body, and Society.</span>
         </h1>
@@ -260,7 +260,7 @@ function AboutSnippet() {
 
           <ScrollReveal direction="right" delay={200}>
             <div className="relative">
-              <div className="rounded-2xl h-66 relative overflow-hidden">
+              <div className="rounded-2xl aspect-[4/2] relative overflow-hidden">
                 <Image
                   src="/images/image.png"
                   alt="Khel Setu Foundation team"
@@ -317,9 +317,11 @@ function PartnersSection() {
     { src: "/images/logosPartner/logo1.png", alt: "Partner 1" },
     { src: "/images/logosPartner/logo2.png", alt: "Partner 2" },
     { src: "/images/logosPartner/logo3.png", alt: "Partner 3" },
+    { src: "/images/logosPartner/logo6.jpg", alt: "Partner 6" },
     { src: "/images/logosPartner/logo4.png", alt: "Partner 4" },
     { src: "/images/logosPartner/logo5.png", alt: "Partner 5" },
   ];
+
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

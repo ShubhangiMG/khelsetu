@@ -42,7 +42,7 @@ const advisors = [
     title: "Software Engineer",
     organization: "Microsoft",
     bio: "A technology professional driving the foundation's digital presence and leveraging technical expertise to amplify community outreach and impact.",
-    photo: "",
+    photo: "/images/advisors/advisor1.jpg",
   },
 ];
 
@@ -65,11 +65,11 @@ export default function AdvisorsPage() {
       {/* Advisors Grid */}
       <section className="py-20 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
             {advisors.map((advisor) => (
               <div
                 key={advisor.name}
-                className="bg-white rounded-xl p-8 text-center shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="bg-white rounded-xl p-8 text-center shadow-sm hover:shadow-md transition-shadow duration-300 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]"
               >
                 <div className="w-36 h-36 rounded-full mx-auto mb-6 overflow-hidden relative">
                   <Image
@@ -91,25 +91,6 @@ export default function AdvisorsPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Advisory Note */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-navy mb-4">
-            Interested in Advising?
-          </h2>
-          <p className="text-gray-600 text-lg mb-8">
-            We welcome experienced professionals who share our passion for
-            sports-driven community development.
-          </p>
-          <Link
-            href="/contact"
-            className="bg-navy text-white px-10 py-4 rounded-md font-bold text-lg hover:bg-navy-light transition-colors duration-200 inline-block"
-          >
-            Connect With Us
-          </Link>
         </div>
       </section>
     </>

@@ -46,11 +46,11 @@ export default function Header() {
               height={48}
               className="h-11 w-auto"
             />
-            <div className="hidden sm:block">
-              <span className="text-xl font-bold text-navy group-hover:text-navy-light transition-colors">
+            <div>
+              <span className="text-base sm:text-xl font-bold text-navy group-hover:text-navy-light transition-colors">
                 Khel Setu
               </span>
-              <span className="block text-[10px] text-gold font-semibold tracking-[0.2em] uppercase">
+              <span className="block text-[8px] sm:text-[10px] text-gold font-semibold tracking-[0.2em] uppercase">
                 Foundation
               </span>
             </div>
