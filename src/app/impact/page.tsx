@@ -68,7 +68,7 @@ export default function ImpactPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="rounded-2xl overflow-hidden h-72 relative">
                 <Image
-                  src="/images/endorphin/IMG-20250706-WA0005.jpg"
+                  src="/images/endorphin/IMG-20251007-WA0086.jpg"
                   alt="Youth development through sports"
                   fill
                   className="object-cover"

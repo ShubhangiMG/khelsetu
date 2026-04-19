@@ -41,7 +41,7 @@ src/
 │   └── Footer.tsx         # Site footer
 public/
 ├── images/
-│   └── logo.png           # <-- Place your logo here!
+│   └── logo.png           
 ```
 
 ---

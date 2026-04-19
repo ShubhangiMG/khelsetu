@@ -63,6 +63,23 @@ export function getGalleryImages(): string[] {
   return getProjectImages("gallery");
 }
 
+const VIDEO_EXTENSIONS = new Set([".mp4", ".webm"]);
+
+/**
+ * Reads video filenames from a folder under public/videos/ at build time.
+ * Returns an array of public URL paths (e.g. "/videos/playfree/clip.mp4").
+ */
+export function getProjectVideos(folder: string): string[] {
+  const dir = path.join(process.cwd(), "public", "videos", folder);
+  if (!fs.existsSync(dir)) return [];
+
+  return fs
+    .readdirSync(dir)
+    .filter((f) => VIDEO_EXTENSIONS.has(path.extname(f).toLowerCase()))
+    .sort()
+    .map((f) => `/videos/${folder}/${f}`);
+}
+
 /** Like getProjectImages but also returns width/height for each image. */
 export function getProjectImagesWithSize(folder: string): ImageInfo[] {
   const dir = path.join(process.cwd(), "public", "images", folder);

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
-import { getProjectImages, getGalleryImages } from "@/lib/getImages";
+import VideoCard from "@/components/VideoCard";
+import { getProjectImages, getGalleryImages, getProjectVideos } from "@/lib/getImages";
 import { siteConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
@@ -10,16 +11,16 @@ export const metadata: Metadata = {
     "Photos and moments from Khel Setu Foundation's programs, events, and community impact.",
 };
 
-/* Build-time: scan all image folders automatically */
+/* Build-time: scan all image and video folders automatically */
 const galleryCategories = [
-  { title: "PlayFree", description: "Sports Against Drugs", folder: "playfree", images: getProjectImages("playfree") },
-  { title: "Endorphin", description: "Mental Wellness Movement", folder: "endorphin", images: getProjectImages("endorphin") },
-  { title: "Life Ready", description: "Life Skills for Youth", folder: "lifeready", images: getProjectImages("lifeready") },
-  { title: "ReadRise", description: "Reading & Library Development", folder: "readrise", images: getProjectImages("readrise") },
-  { title: "Mukti", description: "Women Empowerment", folder: "mukti", images: getProjectImages("mukti") },
-  { title: "Second Innings", description: "Elderly Welfare", folder: "second-innings", images: getProjectImages("second-innings") },
-  { title: "Community Moments", description: "Events, gatherings, and celebrations", folder: "gallery", images: getGalleryImages() },
-].filter((c) => c.images.length > 0);
+  { title: "PlayFree", description: "Sports Against Drugs", folder: "playfree", images: getProjectImages("playfree"), videos: getProjectVideos("playfree") },
+  { title: "Endorphin", description: "Mental Wellness Movement", folder: "endorphin", images: getProjectImages("endorphin"), videos: getProjectVideos("endorphin") },
+  { title: "Life Ready", description: "Life Skills for Youth", folder: "lifeready", images: getProjectImages("lifeready"), videos: getProjectVideos("lifeready") },
+  { title: "ReadRise", description: "Reading & Library Development", folder: "readrise", images: getProjectImages("readrise"), videos: getProjectVideos("readrise") },
+  { title: "Mukti", description: "Women Empowerment", folder: "mukti", images: getProjectImages("mukti"), videos: getProjectVideos("mukti") },
+  { title: "Second Innings", description: "Elderly Welfare", folder: "second-innings", images: getProjectImages("second-innings"), videos: getProjectVideos("second-innings") },
+  { title: "Community Moments", description: "Events, gatherings, and celebrations", folder: "gallery", images: getGalleryImages(), videos: getProjectVideos("gallery") },
+].filter((c) => c.images.length > 0 || c.videos.length > 0);
 
 export default function GalleryPage() {
   return (
@@ -56,8 +57,13 @@ export default function GalleryPage() {
               </div>
             </ScrollReveal>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {category.images.map((src, i) => (
+              {category.videos.map((src, i) => (
                 <ScrollReveal key={src} direction="up" delay={i * 80}>
+                  <VideoCard src={src} title={category.title} index={i} />
+                </ScrollReveal>
+              ))}
+              {category.images.map((src, i) => (
+                <ScrollReveal key={src} direction="up" delay={(category.videos.length + i) * 80}>
                   <div className="aspect-square rounded-2xl overflow-hidden relative group cursor-pointer">
                     <Image
                       src={src}
