@@ -51,9 +51,6 @@ export default function Footer() {
             <h3 className="text-gold text-lg font-bold mb-4">Contact</h3>
             <div className="space-y-3 text-sm text-gray-300">
               <p>
-                📍 {siteConfig.contact.address.line1}, {siteConfig.contact.address.line2}, {siteConfig.contact.address.city}, {siteConfig.contact.address.state} - {siteConfig.contact.address.pin}
-              </p>
-              <p>
                 📞{" "}
                 <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-gold transition-colors">
                   {siteConfig.contact.phone}

@@ -187,21 +187,7 @@ export default function ContactPage() {
                 Get in Touch
               </h2>
               <div className="space-y-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-cream rounded-lg flex items-center justify-center shrink-0">
-                    <span className="text-2xl">📍</span>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-navy">Office Address</h3>
-                    <p className="text-gray-600 mt-1">
-                      {siteConfig.contact.address.line1}
-                      <br />
-                      {siteConfig.contact.address.line2}
-                      <br />
-                      {siteConfig.contact.address.city}, {siteConfig.contact.address.state} - {siteConfig.contact.address.pin}
-                    </p>
-                  </div>
-                </div>
+
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-cream rounded-lg flex items-center justify-center shrink-0">
                     <span className="text-2xl">📞</span>
@@ -243,19 +229,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Google Maps */}
-              <div className="mt-8 rounded-xl overflow-hidden h-64">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3557.097!2d75.833!3d26.912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDU0JzQzLjIiTiA3NcKwNDknNTguOCJF!5e0!3m2!1sen!2sin!4v1"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Khel Setu Foundation Office Location"
-                />
-              </div>
+
             </div>
           </div>
         </div>
