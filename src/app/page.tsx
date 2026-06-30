@@ -311,49 +311,6 @@ function CTASection() {
 }
 
 /* ──────────────────── HOME PAGE ──────────────────── */
-/* ──────────────────── PARTNERS LOGO SLIDER ──────────────────── */
-function PartnersSection() {
-  const logos = [
-    { src: "/images/logosPartner/logo1.png", alt: "Partner 1" },
-    { src: "/images/logosPartner/logo2.png", alt: "Partner 2" },
-    { src: "/images/logosPartner/logo3.png", alt: "Partner 3" },
-    { src: "/images/logosPartner/logo6.jpg", alt: "Partner 6" },
-    { src: "/images/logosPartner/logo4.png", alt: "Partner 4" },
-    { src: "/images/logosPartner/logo5.png", alt: "Partner 5" },
-  ];
-
-  return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollReveal direction="up">
-          <div className="text-center mb-10">
-            <span className="text-crimson font-semibold text-sm uppercase tracking-widest">
-              Trusted By
-            </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-navy mt-2">
-              Our Partners
-            </h2>
-            <div className="w-16 h-1 bg-gold mx-auto mt-4" />
-          </div>
-        </ScrollReveal>
-        <div className="flex flex-wrap justify-center items-center gap-12">
-          {logos.map((logo, i) => (
-            <div key={i} className="hover:scale-110 transition-transform duration-300">
-              <Image
-                src={logo.src}
-                alt={logo.alt}
-                width={180}
-                height={90}
-                className="h-24 w-auto object-contain"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export default function HomePage() {
   return (
     <>
@@ -362,7 +319,6 @@ export default function HomePage() {
       <ProjectsPreview />
       <AboutSnippet />
       <CTASection />
-      <PartnersSection />
     </>
   );
 }
